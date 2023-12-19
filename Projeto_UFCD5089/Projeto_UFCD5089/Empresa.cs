@@ -19,7 +19,6 @@ namespace Projeto_UFCD5089
             {
                 listaVeiculos.Add(veiculo);
             }
-
         }
 
         public void AlugarVeiculo(int index)
@@ -57,13 +56,6 @@ namespace Projeto_UFCD5089
                 else
                 {
                     Console.WriteLine("Veículo não disponível para manutenção.");
-<<<<<<< Updated upstream
-                }
-            }
-            else
-            {
-                Console.WriteLine("Índice de veículo inválido.");
-=======
                 }
             }
             else
@@ -167,63 +159,6 @@ namespace Projeto_UFCD5089
             else
             {
                 Console.WriteLine("Indice inválido");
->>>>>>> Stashed changes
-            }
-        }
-
-        public void MostrarVeiculosManutencao()
-        {
-            Console.WriteLine("Veículos em Manuntenção:");
-            int count = 0;
-
-            foreach (Veiculo veiculo in listaVeiculos)
-            {
-                if (!veiculo.StatusManutencao)
-                {
-                    count++;
-                    Console.WriteLine($"Veículo {count}:");
-                    Console.WriteLine($"Número de Portas: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Tipo de Caixa: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Cilindrada: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Número de Eixos: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Máximo de Passageiros: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Peso Máximo: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Valor de Aluguer Diário: {veiculo.NumeroPortas}");
-                    Console.WriteLine("\n");
-                }
-            }
-
-            if (count == 0)
-            {
-                Console.WriteLine("Não há veículos disponíveis para aluguer no momento.");
-            }
-        }
-
-        public void MostrarVeiculosDisponiveis()
-        {
-            Console.WriteLine("Veículos Disponíveis para Aluguer:");
-            int count = 0;
-
-            foreach (Veiculo veiculo in listaVeiculos)
-            {
-                if (!veiculo.StatusAluguer && !veiculo.StatusManutencao)
-                {
-                    count++;
-                    Console.WriteLine($"Veículo {count}:");
-                    Console.WriteLine($"Número de Portas: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Tipo de Caixa: {veiculo.TipoCaixa}");
-                    Console.WriteLine($"Cilindrada: {veiculo.Cilindrada}");
-                    Console.WriteLine($"Número de Eixos: {veiculo.NumeroEixos}");
-                    Console.WriteLine($"Máximo de Passageiros: {veiculo.MaxPassageiros}");
-                    Console.WriteLine($"Peso Máximo: {veiculo.PesoMaximo}");
-                    Console.WriteLine($"Valor de Aluguer Diário: {veiculo.ValorAluguerDiario}");
-                    Console.WriteLine("\n");
-                }
-            }
-
-            if (count == 0)
-            {
-                Console.WriteLine("Não há veículos disponíveis para aluguer no momento.");
             }
         }
 
@@ -234,26 +169,6 @@ namespace Projeto_UFCD5089
                 listaVeiculos.RemoveAt(index);
                 GF.EscreverCSV(listaVeiculos, @"veiculo.csv");
                 Console.WriteLine($"Veículo {index + 1} removido com sucesso!");
-            }
-            else
-            {
-                Console.WriteLine("Índice de veículo inválido.");
-            }
-        }
-
-        public void RemoverVeiculosManutencao(int index)
-        {
-            if (!listaVeiculos[index].StatusAluguer && listaVeiculos[index].StatusManutencao)
-            {
-                if (index >= 0 && index < listaVeiculos.Count)
-                {
-                    listaVeiculos[index].StatusManutencao = false;
-                    Console.WriteLine($"Veículo {index + 1} removido da manutenção");
-                }
-                else
-                {
-                    Console.WriteLine("Veículo não disponível para manutenção.");
-                }
             }
             else
             {
@@ -340,11 +255,5 @@ namespace Projeto_UFCD5089
             }
         }
 
-
     }
-<<<<<<< Updated upstream
 }
-=======
-}
-
->>>>>>> Stashed changes

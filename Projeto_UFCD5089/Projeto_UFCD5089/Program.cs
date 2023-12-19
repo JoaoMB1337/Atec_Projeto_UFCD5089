@@ -1,6 +1,4 @@
-﻿
-
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace Projeto_UFCD5089
 {
@@ -31,9 +29,6 @@ namespace Projeto_UFCD5089
                 Console.WriteLine("|_________________________|");
 
                 Console.WriteLine("\nSelecione uma opção: ");
-
-
-
 
                 int opcao;
                 if (!int.TryParse(Console.ReadLine(), out opcao))
@@ -118,7 +113,6 @@ namespace Projeto_UFCD5089
                 }
             }
         }
-
         
         private static void MenuAluguer()
         {
@@ -210,7 +204,6 @@ namespace Projeto_UFCD5089
         private static void ListarVeiculos()
         {
             rentCar.MostrarVeiculosDisponiveis(); 
-
         }
 
         //Adiciona vehi. e valida os dados inseridos
@@ -282,7 +275,6 @@ namespace Projeto_UFCD5089
             rentCar.ManutencaoVeiculo(index);
         }
 
-<<<<<<< Updated upstream
        
         private static void RemoverVeiculo()
         {
@@ -327,8 +319,6 @@ namespace Projeto_UFCD5089
             int dias = int.Parse(Console.ReadLine());
             rentCar.ValorAluguer(index, dias);
         }
-=======
->>>>>>> Stashed changes
 
     }
 
