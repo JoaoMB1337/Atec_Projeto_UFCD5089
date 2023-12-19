@@ -13,14 +13,11 @@ namespace Projeto_UFCD5089
 
 
         public void AddVeiculo (Veiculo veiculo)
-<<<<<<< Updated upstream
         {
             listaVeiculos.Add(veiculo);
             GF.EscreverCSV(listaVeiculos, @"veiculo.csv");
-=======
         { 
             listaVeiculos.Add(veiculo);   
->>>>>>> Stashed changes
         }
 
         public void AlugarVeiculo(int index)
