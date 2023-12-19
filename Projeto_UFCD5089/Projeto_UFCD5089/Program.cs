@@ -58,32 +58,67 @@ namespace Projeto_UFCD5089
 
         private static void ListarVeiculos()
         {
-            Console.WriteLine("Indian Guy");
+            rentCar.MostrarVeiculosDisponiveis(); 
+
         }
 
+        //Adiciona vehi. e valida os dados inseridos
         private static void AdicionarVeiculo()
         {
-            Console.Write("Informe o número de portas do veículo: ");
-            int numeroPortas = int.Parse(Console.ReadLine());
+            int numeroPortas, cilindrada, numeroEixos, maxPassageiros, pesoMaximo;
+            double valorAluguerDiario;
+            string tipoCaixa; 
 
-            Console.Write("Informe o tipo de caixa do veículo: ");
-            string tipoCaixa = Console.ReadLine();
+            do
+            {
+                Console.Write("Informe o número de portas do veículo: ");
+                numeroPortas = int.Parse(Console.ReadLine());
 
-            Console.Write("Informe a cilindrada do veículo: ");
-            int cilindrada = int.Parse(Console.ReadLine());
+            } while (numeroPortas < 1 || numeroPortas > 5); 
+            
+            do
+            {
+                Console.Write("Informe o tipo de caixa do veículo: ");
+                tipoCaixa = Console.ReadLine();
 
-            Console.Write("Informe o número de eixos do veículo: ");
-            int numeroEixos = int.Parse(Console.ReadLine());
+            } while(!(tipoCaixa.ToLower() == "manual" || tipoCaixa.ToLower() == "automatico"));
 
-            Console.Write("Informe o número máximo de passageiros do veículo: ");
-            int maxPassageiros = int.Parse(Console.ReadLine());
+            do
+            {
+                Console.Write("Informe a cilindrada do veículo: ");
+                cilindrada = int.Parse(Console.ReadLine());
 
-            Console.Write("Informe o peso máximo do veículo: ");
-            int pesoMaximo = int.Parse(Console.ReadLine());
+            } while (cilindrada < 100 || cilindrada > 10000);
 
-            Console.Write("Informe o valor do aluguer diário do veículo: ");
-            double valorAluguerDiario = double.Parse(Console.ReadLine());
+            do
+            {
+                Console.Write("Informe o número de eixos do veículo: ");
+                numeroEixos = int.Parse(Console.ReadLine());
 
+            } while(numeroEixos < 1 || numeroEixos > 3);
+
+            do
+            {
+                Console.Write("Informe o número máximo de passageiros do veículo: ");
+                maxPassageiros = int.Parse(Console.ReadLine());
+
+            } while(maxPassageiros < 1 || maxPassageiros > 10);
+
+            do
+            {
+                Console.Write("Informe o peso máximo do veículo: ");
+                pesoMaximo = int.Parse(Console.ReadLine());
+
+            } while (pesoMaximo < 100 || pesoMaximo > 10000);
+
+            do
+            {
+                Console.Write("Informe o valor do aluguer diário do veículo: ");
+                valorAluguerDiario = double.Parse(Console.ReadLine());
+
+            } while(valorAluguerDiario < 1);
+
+            //Quando se cria o veh. o status e manutenção ainda nao são contados
             Veiculo novoVeiculo = new Veiculo(numeroPortas, tipoCaixa, cilindrada, numeroEixos, maxPassageiros, pesoMaximo, valorAluguerDiario, false, false);
             rentCar.AddVeiculo(novoVeiculo);
         }
