@@ -282,6 +282,7 @@ namespace Projeto_UFCD5089
             rentCar.ManutencaoVeiculo(index);
         }
 
+<<<<<<< Updated upstream
        
         private static void RemoverVeiculo()
         {
@@ -326,6 +327,8 @@ namespace Projeto_UFCD5089
             int dias = int.Parse(Console.ReadLine());
             rentCar.ValorAluguer(index, dias);
         }
+=======
+>>>>>>> Stashed changes
 
     }
 

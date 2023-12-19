@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,11 +57,117 @@ namespace Projeto_UFCD5089
                 else
                 {
                     Console.WriteLine("Veículo não disponível para manutenção.");
+<<<<<<< Updated upstream
                 }
             }
             else
             {
                 Console.WriteLine("Índice de veículo inválido.");
+=======
+                }
+            }
+            else
+            {
+                Console.WriteLine("Índice de veículo inválido.");
+            }
+        }
+
+        public void MostrarVeiculosManutencao()
+        {
+            Console.WriteLine("Veículos Disponíveis para Aluguel:");
+            int count = 0;
+
+            foreach (Veiculo veiculo in listaVeiculos)
+            {
+                if (!veiculo.StatusManutencao)
+                {
+                    count++;
+                    Console.WriteLine($"Veículo {count}:");
+                    Console.WriteLine($"Número de Portas: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Tipo de Caixa: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Cilindrada: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Número de Eixos: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Máximo de Passageiros: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Peso Máximo: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Valor de Aluguer Diário: {veiculo.NumeroPortas}");
+                    Console.WriteLine("\n");
+                }
+            }
+
+            if (count == 0)
+            {
+                Console.WriteLine("Não há veículos disponíveis para aluguel no momento.");
+            }
+        }
+
+        public void MostrarVeiculosDisponiveis()
+        {
+            Console.WriteLine("Veículos Disponíveis para Aluguel:");
+            int count = 0;
+
+            foreach (Veiculo veiculo in listaVeiculos)
+            {
+                if (!veiculo.StatusAluguer && !veiculo.StatusManutencao)
+                {
+                    count++;
+                    Console.WriteLine($"Veículo {count}:");
+                    Console.WriteLine($"Número de Portas: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Tipo de Caixa: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Cilindrada: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Número de Eixos: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Máximo de Passageiros: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Peso Máximo: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Valor de Aluguer Diário: {veiculo.NumeroPortas}");
+                    Console.WriteLine("\n");
+                }
+            }
+
+            if (count == 0)
+            {
+                Console.WriteLine("Não há veículos disponíveis para aluguel no momento.");
+            }
+        }
+
+        public void RemoverVeiculosManutencao(int index)
+        {
+            if (!listaVeiculos[index].StatusAluguer && listaVeiculos[index].StatusManutencao)
+            {
+                if (index >= 0 && index < listaVeiculos.Count)
+                {
+                    listaVeiculos[index].StatusManutencao = false;
+                }
+                else
+                {
+                    Console.WriteLine("Veículo não disponível para manutenção.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Índice de veículo inválido.");
+            }
+
+        }
+
+        public void ValorPagoAluguer(int index, int diasAluguer)
+        {
+            if (index >= 0 && index < listaVeiculos.Count && diasAluguer > 0)
+            {
+                Veiculo veiculo = listaVeiculos[index];
+
+                if (veiculo.StatusManutencao != false)
+                {
+                    double valorTotalAluguer = veiculo.ValorAluguerDiario * diasAluguer;
+                    Console.WriteLine($"Valor total do aluguer: R${valorTotalAluguer}");
+                }
+                else
+                {
+                    Console.WriteLine("Veiculo em manutenção.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Indice inválido");
+>>>>>>> Stashed changes
             }
         }
 
@@ -235,4 +342,9 @@ namespace Projeto_UFCD5089
 
 
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+
+>>>>>>> Stashed changes
