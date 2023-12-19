@@ -98,20 +98,16 @@ namespace Projeto_UFCD5089
                 switch (opcao)
                 {
                     case 1:
-
                         AdicionarVeiculo();
                         break;
                     case 2:
-
-                        //RemoverVeiculo();
+                        RemoverVeiculo();
                         break;
                     case 3:
-
-                        //AdicionarManutencao();
+                        FazerManutencao();
                         break;
                     case 4:
-
-                        //RemoverManutencao();
+                        RemoverDaManutencao();
                         break;
                     case 5:
                         voltar = true;
@@ -151,8 +147,7 @@ namespace Projeto_UFCD5089
                     AlugarVeiculo();
                     break;
                 case 2:
-
-                    //QuantidadeVeiculosDisponiveis();
+                    ListarVeiculos();
                     break;         
                 default:
                     Console.WriteLine("Opção inválida. Tente novamente.");
@@ -188,10 +183,10 @@ namespace Projeto_UFCD5089
             switch (opcao)
             {
                 case 1:
-                    //VeiculosAlugados();
+                    VeiculosAlugados();
                     break;
                 case 2:
-                    //VeiculosDisponiveis();
+                    VeiculosDisponiveisAluguer();
                     break;
                 case 3:
                     //ValorPagoAluguer();
@@ -206,15 +201,15 @@ namespace Projeto_UFCD5089
 
         private static void AlugarVeiculo()
         {
-           // rentCar.MostrarVeiculosDisponiveis();
+            rentCar.MostrarVeiculosDisponiveis();
             Console.Write("Qual e o veiculo a alugar: ");
             int index = int.Parse(Console.ReadLine());
-           // rentCar.AlugarVeiculo(index);
+            rentCar.AlugarVeiculo(index);
         }
 
         private static void ListarVeiculos()
         {
-            //rentCar.MostrarVeiculosDisponiveis(); 
+            rentCar.MostrarVeiculosDisponiveis(); 
 
         }
 
@@ -281,10 +276,48 @@ namespace Projeto_UFCD5089
 
         private static void ColocarEmManutencaoVeiculos()
         {
-            //rentCar.MostrarVeiculosDisponiveis();
+            rentCar.MostrarVeiculosDisponiveis();
             Console.WriteLine("Veiculo a meter em manutenção: ");
             int index = int.Parse(Console.ReadLine());
-            //rentCar.ManutencaoVeiculo(index);
+            rentCar.ManutencaoVeiculo(index);
         }
+
+       
+        private static void RemoverVeiculo()
+        {
+            rentCar.MostrarVeiculosDisponiveis();
+            Console.WriteLine("Veiculo a remover: ");
+            int index = int.Parse(Console.ReadLine());
+            rentCar.RemoverVeiculo(index);
+        }
+
+        private static void FazerManutencao()
+        {
+            rentCar.MostrarVeiculosDisponiveis();
+            Console.WriteLine("Veiculo a meter em manutenção: ");
+            int index = int.Parse(Console.ReadLine());
+            rentCar.ManutencaoVeiculo(index);
+        }
+
+        private static void RemoverDaManutencao()
+        {
+            rentCar.MostrarVeiculosDisponiveis();
+            Console.WriteLine("Veiculo a remover da manutenção: ");
+            int index = int.Parse(Console.ReadLine());
+            rentCar.RemoverVeiculosManutencao(index);
+        }
+
+        private static void VeiculosAlugados()
+        {
+            rentCar.ListarVeiculosAlugados();
+        }
+
+        private static void VeiculosDisponiveisAluguer()
+        {
+            rentCar.listarVeiculosDisponiveisParaAluguer();
+        }
+       
     }
+
+
 }
