@@ -9,5 +9,6 @@ namespace Projeto_UFCD5089
     internal class GestorFicheiros
     {
 
+
     }
 }

@@ -57,7 +57,7 @@ namespace Projeto_UFCD5089
 
         private static void ListarVeiculos()
         {
-            Console.WriteLine("Idian Guy");
+            Console.WriteLine("Indian Guy");
         }
 
         private static void AdicionarVeiculo()
@@ -85,6 +85,14 @@ namespace Projeto_UFCD5089
 
             Veiculo novoVeiculo = new Veiculo(numeroPortas, tipoCaixa, cilindrada, numeroEixos, maxPassageiros, pesoMaximo, valorAluguerDiario, false, false);
             rentCar.AddVeiculo(novoVeiculo);
+        }
+
+        private static void ColocarEmManutencaoVeiculos()
+        {
+            rentCar.MostrarVeiculosDisponiveis();
+            Console.WriteLine("Veiculo a meter em manutenção: ");
+            int index = int.Parse(Console.ReadLine());
+            rentCar.ManutencaoVeiculo(index);
         }
     }
 }
