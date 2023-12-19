@@ -18,7 +18,7 @@ namespace Projeto_UFCD5089
             if (!listaVeiculos.Contains(veiculo))
             {
                 listaVeiculos.Add(veiculo);
-                GF.EscreverCSV(listaVeiculos, @"veiculo.csv");
+                GestorFicheiros.EscreverCSV(listaVeiculos, @"veiculo.csv");
                 Console.WriteLine("Veículo adicionado com sucesso!");
             }
             else
@@ -34,7 +34,7 @@ namespace Projeto_UFCD5089
                 if (!listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
                 {
                     listaVeiculos[index].StatusAluguer = true;
-                    GF.AtualizarEstadoAluguelVeiculo(listaVeiculos, @"veiculo.csv");
+                    GestorFicheiros.AtualizarEstadoAluguelVeiculo(listaVeiculos, @"veiculo.csv");
                     Console.WriteLine($"Veiculo {index + 1} alugado com sucesso!");
                 }
                 else
@@ -56,7 +56,7 @@ namespace Projeto_UFCD5089
                 if (!listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
                 {
                     listaVeiculos[index].StatusManutencao = true;
-                    GF.AtulizarEstadoManutençãoVeiculo(listaVeiculos, @"veiculo.csv");
+                    GestorFicheiros.AtulizarEstadoManutençãoVeiculo(listaVeiculos, @"veiculo.csv");
                     Console.WriteLine($"Veículo {index + 1} colocado em manutenção com sucesso!");
                 }
                 else
@@ -99,7 +99,7 @@ namespace Projeto_UFCD5089
         }
 
          public void MostrarVeiculosDisponiveis()
-        {
+         {
             Console.WriteLine("Veículos Disponíveis para Aluguel:");
             int count = 0;
 
@@ -124,13 +124,13 @@ namespace Projeto_UFCD5089
             {
                 Console.WriteLine("Não há veículos disponíveis para aluguel no momento.");
             }
-        }
+         }
 
         public void CarregarVeiculosDoArquivo(string caminhoArquivo)
         {
-            int ultimoId = GF.ObterUltimoId(caminhoArquivo);
+            int ultimoId = GestorFicheiros.ObterUltimoId(caminhoArquivo);
             Veiculo.DefinirUltimoId(ultimoId);
-            listaVeiculos = GF.CarregarListaViaArquivo(caminhoArquivo);
+            listaVeiculos = GestorFicheiros.CarregarListaViaArquivo(caminhoArquivo);
             Console.WriteLine("Veiculos carregados com sucesso!");
         }
         
@@ -162,7 +162,6 @@ namespace Projeto_UFCD5089
                 Console.WriteLine("Não há veículos cadastrados.");
             }
         }
-
 
         public void RemoverVeiculosManutencao(int index)
         {
@@ -211,7 +210,7 @@ namespace Projeto_UFCD5089
             if (index >= 0 && index < listaVeiculos.Count)
             {
                 listaVeiculos.RemoveAt(index);
-                GF.EscreverCSV(listaVeiculos, @"veiculo.csv");
+                GestorFicheiros.EscreverCSV(listaVeiculos, @"veiculo.csv");
                 Console.WriteLine($"Veículo {index + 1} removido com sucesso!");
             }
             else

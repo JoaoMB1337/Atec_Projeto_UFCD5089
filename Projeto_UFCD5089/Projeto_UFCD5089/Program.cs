@@ -61,6 +61,8 @@ namespace Projeto_UFCD5089
             }
         }
 
+        #region Menus
+
         private static void MenuGestorVeiculos()
         {
             bool voltar = false;
@@ -193,6 +195,8 @@ namespace Projeto_UFCD5089
             }
         }
 
+        #endregion
+
         private static void AlugarVeiculo()
         {
             rentCar.MostrarVeiculosDisponiveis();
@@ -206,7 +210,6 @@ namespace Projeto_UFCD5089
             rentCar.MostrarVeiculosDisponiveis(); 
         }
 
-        //Adiciona vehi. e valida os dados inseridos
         private static void AdicionarVeiculo()
         {
             int numeroPortas, cilindrada, numeroEixos, maxPassageiros, pesoMaximo;
@@ -266,15 +269,6 @@ namespace Projeto_UFCD5089
             Veiculo novoVeiculo = new Veiculo(numeroPortas, tipoCaixa, cilindrada, numeroEixos, maxPassageiros, pesoMaximo, valorAluguerDiario, false, false);
             rentCar.AddVeiculo(novoVeiculo);
         }
-
-        private static void ColocarEmManutencaoVeiculos()
-        {
-            rentCar.MostrarVeiculosDisponiveis();
-            Console.WriteLine("Veiculo a meter em manutenção: ");
-            int index = int.Parse(Console.ReadLine());
-            rentCar.ManutencaoVeiculo(index);
-        }
-
        
         private static void RemoverVeiculo()
         {
@@ -321,6 +315,4 @@ namespace Projeto_UFCD5089
         }
 
     }
-
-
 }
