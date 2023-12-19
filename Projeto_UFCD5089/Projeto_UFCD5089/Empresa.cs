@@ -8,11 +8,14 @@ namespace Projeto_UFCD5089
 {
     internal class Empresa
     {
-        List <Veiculo> listaVeiculos = new List <Veiculo> ();
+        GestorFicheiros GF = new GestorFicheiros();
+        List<Veiculo> listaVeiculos = new List<Veiculo>();
+
 
         public void AddVeiculo (Veiculo veiculo)
         {
             listaVeiculos.Add(veiculo);
+            GF.EscreverCSV(listaVeiculos, @"veiculo.csv");
         }
 
         public void AlugarVeiculo(int index)
@@ -22,6 +25,7 @@ namespace Projeto_UFCD5089
                 if (!listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
                 {
                     listaVeiculos[index].StatusAluguer = true;
+                    GF.AtualizarEstadoAluguelVeiculo(listaVeiculos, @"veiculo.csv");
                     Console.WriteLine($"Veiculo {index + 1} alugado com sucesso!");
                 }
                 else
@@ -43,6 +47,7 @@ namespace Projeto_UFCD5089
                 if (!listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
                 {
                     listaVeiculos[index].StatusManutencao = true;
+                    GF.AtulizarEstadoManutençãoVeiculo(listaVeiculos, @"veiculo.csv");
                     Console.WriteLine($"Veículo {index + 1} colocado em manutenção com sucesso!");
                 }
                 else

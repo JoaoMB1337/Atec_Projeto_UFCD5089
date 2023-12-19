@@ -31,7 +31,8 @@ namespace Projeto_UFCD5089
                         AdicionarVeiculo();
                         break;
                     case 2:
-                        AlugarVeiculo();
+                        int index = int.Parse(Console.ReadLine());
+                        rentCar.AlugarVeiculo(index);
                         break;
                     case 3:
                         ListarVeiculos();
