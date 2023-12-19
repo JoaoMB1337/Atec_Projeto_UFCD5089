@@ -163,61 +163,6 @@ namespace Projeto_UFCD5089
             }
         }
 
-        public void MostrarVeiculosManutencao()
-        {
-            Console.WriteLine("Veículos Disponíveis para Aluguel:");
-            int count = 0;
-
-            foreach (Veiculo veiculo in listaVeiculos)
-            {
-                if (!veiculo.StatusManutencao)
-                {
-                    count++;
-                    Console.WriteLine($"Veículo {count}:");
-                    Console.WriteLine($"Número de Portas: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Tipo de Caixa: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Cilindrada: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Número de Eixos: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Máximo de Passageiros: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Peso Máximo: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Valor de Aluguer Diário: {veiculo.NumeroPortas}");
-                    Console.WriteLine("\n");
-                }
-            }
-
-            if (count == 0)
-            {
-                Console.WriteLine("Não há veículos disponíveis para aluguel no momento.");
-            }
-        }
-
-        public void MostrarVeiculosDisponiveis()
-        {
-            Console.WriteLine("Veículos Disponíveis para Aluguel:");
-            int count = 0;
-
-            foreach (Veiculo veiculo in listaVeiculos)
-            {
-                if (!veiculo.StatusAluguer && !veiculo.StatusManutencao)
-                {
-                    count++;
-                    Console.WriteLine($"Veículo {count}:");
-                    Console.WriteLine($"Número de Portas: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Tipo de Caixa: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Cilindrada: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Número de Eixos: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Máximo de Passageiros: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Peso Máximo: {veiculo.NumeroPortas}");
-                    Console.WriteLine($"Valor de Aluguer Diário: {veiculo.NumeroPortas}");
-                    Console.WriteLine("\n");
-                }
-            }
-
-            if (count == 0)
-            {
-                Console.WriteLine("Não há veículos disponíveis para aluguel no momento.");
-            }
-        }
 
         public void RemoverVeiculosManutencao(int index)
         {
