@@ -106,6 +106,7 @@ namespace Projeto_UFCD5089
                         //RemoverVeiculo();
                         break;
                     case 3:
+
                         //AdicionarManutencao();
                         break;
                     case 4:
@@ -121,6 +122,9 @@ namespace Projeto_UFCD5089
                 }
             }
         }
+
+
+
         
         private static void MenuAluguer()
         {
@@ -146,7 +150,7 @@ namespace Projeto_UFCD5089
             switch (opcao)
             {
                 case 1:
-                    //QuantidadeVeiculosAlugados();
+                    AlugarVeiculo();
                     break;
                 case 2:
 
@@ -205,7 +209,7 @@ namespace Projeto_UFCD5089
 
 
 
-
+        
 
         private static void AlugarVeiculo()
         {
