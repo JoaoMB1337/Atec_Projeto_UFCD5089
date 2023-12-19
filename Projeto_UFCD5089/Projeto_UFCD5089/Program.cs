@@ -123,8 +123,6 @@ namespace Projeto_UFCD5089
             }
         }
 
-
-
         
         private static void MenuAluguer()
         {
@@ -162,7 +160,6 @@ namespace Projeto_UFCD5089
             }
 
         }
-
 
         private static void MenuRelatorios()
         {
@@ -207,21 +204,17 @@ namespace Projeto_UFCD5089
             }
         }
 
-
-
-        
-
         private static void AlugarVeiculo()
         {
-            rentCar.MostrarVeiculosDisponiveis();
+           // rentCar.MostrarVeiculosDisponiveis();
             Console.Write("Qual e o veiculo a alugar: ");
             int index = int.Parse(Console.ReadLine());
-            rentCar.AlugarVeiculo(index);
+           // rentCar.AlugarVeiculo(index);
         }
 
         private static void ListarVeiculos()
         {
-            rentCar.MostrarVeiculosDisponiveis(); 
+            //rentCar.MostrarVeiculosDisponiveis(); 
 
         }
 
@@ -288,10 +281,10 @@ namespace Projeto_UFCD5089
 
         private static void ColocarEmManutencaoVeiculos()
         {
-            rentCar.MostrarVeiculosDisponiveis();
+            //rentCar.MostrarVeiculosDisponiveis();
             Console.WriteLine("Veiculo a meter em manutenção: ");
             int index = int.Parse(Console.ReadLine());
-            rentCar.ManutencaoVeiculo(index);
+            //rentCar.ManutencaoVeiculo(index);
         }
     }
 }
