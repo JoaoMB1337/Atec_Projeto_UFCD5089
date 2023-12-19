@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Projeto_UFCD5089
 {
@@ -11,112 +12,154 @@ namespace Projeto_UFCD5089
         GestorFicheiros GF = new GestorFicheiros();
         List<Veiculo> listaVeiculos = new List<Veiculo>();
 
-
         public void AddVeiculo(Veiculo veiculo)
         {
-            listaVeiculos.Add(veiculo);
-            GF.EscreverCSV(listaVeiculos, @"veiculo.csv");
+            if (!listaVeiculos.Contains(veiculo))
             {
                 listaVeiculos.Add(veiculo);
+                GF.EscreverCSV(listaVeiculos, @"veiculo.csv");
+                Console.WriteLine("Veículo adicionado com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("O veículo já existe na lista.");
             }
 
-            void AlugarVeiculo(int index)
+        }
+
+        public void AlugarVeiculo(int index)
+        {
+            if (index >= 0 && index < listaVeiculos.Count)
             {
-                if (index >= 0 && index < listaVeiculos.Count)
+                if (!listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
                 {
-                    if (!listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
-                    {
-                        listaVeiculos[index].StatusAluguer = true;
-                        GF.AtualizarEstadoAluguelVeiculo(listaVeiculos, @"veiculo.csv");
-                        Console.WriteLine($"Veiculo {index + 1} alugado com sucesso!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Veiculo nao disponivel para aluguel.");
-                    }
+                    listaVeiculos[index].StatusAluguer = true;
+                    GF.AtualizarEstadoAluguelVeiculo(listaVeiculos, @"veiculo.csv");
+                    Console.WriteLine($"Veiculo {index + 1} alugado com sucesso!");
                 }
                 else
                 {
-                    Console.WriteLine("Indice de veiculo invalido.");
+                    Console.WriteLine("Veiculo nao disponivel para aluguel.");
                 }
-
+            }
+            else
+            {
+                Console.WriteLine("Indice de veiculo invalido.");
             }
 
-            void ManutencaoVeiculo(int index)
+        }
+
+        public void ManutencaoVeiculo(int index)
+        {
+            if (index >= 0 && index < listaVeiculos.Count)
             {
-                if (index >= 0 && index < listaVeiculos.Count)
+                if (!listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
                 {
-                    if (!listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
-                    {
-                        listaVeiculos[index].StatusManutencao = true;
-                        GF.AtulizarEstadoManutençãoVeiculo(listaVeiculos, @"veiculo.csv");
-                        Console.WriteLine($"Veículo {index + 1} colocado em manutenção com sucesso!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Veículo não disponível para manutenção.");
-                    }
+                    listaVeiculos[index].StatusManutencao = true;
+                    GF.AtulizarEstadoManutençãoVeiculo(listaVeiculos, @"veiculo.csv");
+                    Console.WriteLine($"Veículo {index + 1} colocado em manutenção com sucesso!");
                 }
                 else
                 {
-                    Console.WriteLine("Índice de veículo inválido.");
+                    Console.WriteLine("Veículo não disponível para manutenção.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Índice de veículo inválido.");
+            }
+        }
+
+        public void MostrarVeiculosManutencao()
+        {
+            Console.WriteLine("Veículos Disponíveis para Aluguel:");
+            int count = 0;
+
+            foreach (Veiculo veiculo in listaVeiculos)
+            {
+                if (!veiculo.StatusManutencao)
+                {
+                    count++;
+                    Console.WriteLine($"Veículo {count}:");
+                    Console.WriteLine($"Número de Portas: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Tipo de Caixa: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Cilindrada: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Número de Eixos: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Máximo de Passageiros: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Peso Máximo: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Valor de Aluguer Diário: {veiculo.NumeroPortas}");
+                    Console.WriteLine("\n");
                 }
             }
 
-            void MostrarVeiculosManutencao()
+            if (count == 0)
             {
-                Console.WriteLine("Veículos Disponíveis para Aluguel:");
-                int count = 0;
+                Console.WriteLine("Não há veículos disponíveis para aluguel no momento.");
+            }
+        }
 
-                foreach (Veiculo veiculo in listaVeiculos)
-                {
-                    if (!veiculo.StatusManutencao)
-                    {
-                        count++;
-                        Console.WriteLine($"Veículo {count}:");
-                        Console.WriteLine($"Número de Portas: {veiculo.NumeroPortas}");
-                        Console.WriteLine($"Tipo de Caixa: {veiculo.NumeroPortas}");
-                        Console.WriteLine($"Cilindrada: {veiculo.NumeroPortas}");
-                        Console.WriteLine($"Número de Eixos: {veiculo.NumeroPortas}");
-                        Console.WriteLine($"Máximo de Passageiros: {veiculo.NumeroPortas}");
-                        Console.WriteLine($"Peso Máximo: {veiculo.NumeroPortas}");
-                        Console.WriteLine($"Valor de Aluguer Diário: {veiculo.NumeroPortas}");
-                        Console.WriteLine("\n");
-                    }
-                }
+         public void MostrarVeiculosDisponiveis()
+        {
+            Console.WriteLine("Veículos Disponíveis para Aluguel:");
+            int count = 0;
 
-                if (count == 0)
+            foreach (Veiculo veiculo in listaVeiculos)
+            {
+                if (!veiculo.StatusAluguer && !veiculo.StatusManutencao)
                 {
-                    Console.WriteLine("Não há veículos disponíveis para aluguel no momento.");
+                    count++;
+                    Console.WriteLine($"Veículo {count}:");
+                    Console.WriteLine($"Número de Portas: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Tipo de Caixa: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Cilindrada: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Número de Eixos: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Máximo de Passageiros: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Peso Máximo: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Valor de Aluguer Diário: {veiculo.NumeroPortas}");
+                    Console.WriteLine("\n");
                 }
             }
 
-            void MostrarVeiculosDisponiveis()
+            if (count == 0)
             {
-                Console.WriteLine("Veículos Disponíveis para Aluguel:");
-                int count = 0;
+                Console.WriteLine("Não há veículos disponíveis para aluguel no momento.");
+            }
+        }
 
-                foreach (Veiculo veiculo in listaVeiculos)
-                {
-                    if (!veiculo.StatusAluguer && !veiculo.StatusManutencao)
-                    {
-                        count++;
-                        Console.WriteLine($"Veículo {count}:");
-                        Console.WriteLine($"Número de Portas: {veiculo.NumeroPortas}");
-                        Console.WriteLine($"Tipo de Caixa: {veiculo.NumeroPortas}");
-                        Console.WriteLine($"Cilindrada: {veiculo.NumeroPortas}");
-                        Console.WriteLine($"Número de Eixos: {veiculo.NumeroPortas}");
-                        Console.WriteLine($"Máximo de Passageiros: {veiculo.NumeroPortas}");
-                        Console.WriteLine($"Peso Máximo: {veiculo.NumeroPortas}");
-                        Console.WriteLine($"Valor de Aluguer Diário: {veiculo.NumeroPortas}");
-                        Console.WriteLine("\n");
-                    }
-                }
+        public void CarregarVeiculosDoArquivo(string caminhoArquivo)
+        {
+            int ultimoId = GF.ObterUltimoId(caminhoArquivo);
+            Veiculo.DefinirUltimoId(ultimoId);
+            listaVeiculos = GF.CarregarListaViaArquivo(caminhoArquivo);
+            Console.WriteLine("Veiculos carregados com sucesso!");
+        }
+        
+        public void MostrarTodosVeiculos()
+        {
+            Console.WriteLine("Lista de Veículos:");
 
-                if (count == 0)
+            if (listaVeiculos.Count > 0)
+            {
+                for (int i = 0; i < listaVeiculos.Count; i++)
                 {
-                    Console.WriteLine("Não há veículos disponíveis para aluguel no momento.");
+                    Veiculo veiculo = listaVeiculos[i];
+                    Console.WriteLine($"Veículo {i + 1}:");
+                    Console.WriteLine($"ID: {veiculo.Id}");
+                    Console.WriteLine($"Número de Portas: {veiculo.NumeroPortas}");
+                    Console.WriteLine($"Tipo de Caixa: {veiculo.TipoCaixa}");
+                    Console.WriteLine($"Cilindrada: {veiculo.Cilindrada}");
+                    Console.WriteLine($"Número de Eixos: {veiculo.NumeroEixos}");
+                    Console.WriteLine($"Máximo de Passageiros: {veiculo.MaxPassageiros}");
+                    Console.WriteLine($"Peso Máximo: {veiculo.PesoMaximo}");
+                    Console.WriteLine($"Valor de Aluguer Diário: {veiculo.ValorAluguerDiario}");
+                    Console.WriteLine($"Status de Aluguel: {(veiculo.StatusAluguer ? "Alugado" : "Disponível")}");
+                    Console.WriteLine($"Status de Manutenção: {(veiculo.StatusManutencao ? "Em manutenção" : "Disponível")}");
+                    Console.WriteLine();
                 }
+            }
+            else
+            {
+                Console.WriteLine("Não há veículos cadastrados.");
             }
         }
     }

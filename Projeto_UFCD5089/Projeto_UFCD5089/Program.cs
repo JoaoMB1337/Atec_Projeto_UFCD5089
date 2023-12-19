@@ -1,20 +1,20 @@
-﻿
-
-using System.Drawing;
-
+﻿using System.Drawing;
 namespace Projeto_UFCD5089
 {
     internal class Program
     {
-         private static Empresa rentCar = new Empresa();
+        private static Empresa rentCar = new Empresa();
 
         static void Main(string[] args)
         {
+            
             bool sair = false;
 
             while (!sair)
             {
                 Console.Clear();
+
+                rentCar.CarregarVeiculosDoArquivo("veiculo.csv");
 
                 Console.WriteLine(" _________________________");
                 Console.WriteLine("|                         |");
@@ -31,17 +31,12 @@ namespace Projeto_UFCD5089
                 Console.WriteLine("|_________________________|");
 
                 Console.WriteLine("\nSelecione uma opção: ");
-
-
-
-
                 int opcao;
                 if (!int.TryParse(Console.ReadLine(), out opcao))
                 {
                     Console.WriteLine("Opção inválida. Tente novamente.");
                     continue;
                 }
-
                 switch (opcao)
                 {
                     case 1:
@@ -64,8 +59,8 @@ namespace Projeto_UFCD5089
                         break;
                 }
             }
-            
         }
+
         private static void MenuGestorVeiculos()
         {
             bool voltar = false;
@@ -122,7 +117,6 @@ namespace Projeto_UFCD5089
                 }
             }
         }
-
         
         private static void MenuAluguer()
         {
@@ -281,7 +275,7 @@ namespace Projeto_UFCD5089
 
         private static void ColocarEmManutencaoVeiculos()
         {
-            //rentCar.MostrarVeiculosDisponiveis();
+            rentCar.MostrarVeiculosDisponiveis();
             Console.WriteLine("Veiculo a meter em manutenção: ");
             int index = int.Parse(Console.ReadLine());
             //rentCar.ManutencaoVeiculo(index);
