@@ -154,6 +154,29 @@ namespace Projeto_UFCD5089
             }
         }
 
+        public void ValorAluguer(int index, int diasAluguer)
+        {
+            if (index >= 0 && index < listaVeiculos.Count && diasAluguer > 0)
+            {
+                Veiculo veiculo = listaVeiculos[index];
+
+                if (veiculo.StatusManutencao != true)
+                {
+                    double valorTotalAluguer = veiculo.ValorAluguerDiario * diasAluguer;
+                    Console.WriteLine($"Valor total do aluguer: R${valorTotalAluguer}");
+                    Console.ReadKey();
+                }
+                else
+                {
+                    Console.WriteLine("Veiculo em manutenção.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Indice inválido");
+            }
+        }
+
         public void ListarVeiculosAlugados()
         {
             Console.WriteLine("Veículos Alugados:");

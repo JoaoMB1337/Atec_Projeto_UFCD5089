@@ -189,7 +189,7 @@ namespace Projeto_UFCD5089
                     VeiculosDisponiveisAluguer();
                     break;
                 case 3:
-                    //ValorPagoAluguer();
+                    ValorPagoAluguer();
                     break;
                 case 4:
                     break;
@@ -316,7 +316,17 @@ namespace Projeto_UFCD5089
         {
             rentCar.listarVeiculosDisponiveisParaAluguer();
         }
-       
+
+        private static void ValorPagoAluguer()
+        {
+            rentCar.MostrarVeiculosDisponiveis();
+            Console.WriteLine("Veiculo a alugar.");
+            int index = int.Parse(Console.ReadLine());
+            Console.WriteLine("Dias aluguer veiculo");
+            int dias = int.Parse(Console.ReadLine());
+            rentCar.ValorAluguer(index, dias);
+        }
+
     }
 
 
