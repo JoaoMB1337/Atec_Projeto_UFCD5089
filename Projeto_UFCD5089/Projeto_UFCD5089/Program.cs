@@ -1,5 +1,7 @@
 ﻿
 
+using System.Drawing;
+
 namespace Projeto_UFCD5089
 {
     internal class Program
@@ -12,11 +14,26 @@ namespace Projeto_UFCD5089
 
             while (!sair)
             {
-                Console.WriteLine("Selecione uma opção:");
-                Console.WriteLine("1. Adicionar veículo");
-                Console.WriteLine("2. Alugar veículo");
-                Console.WriteLine("3. Listar veículos");
-                Console.WriteLine("4. Sair");
+                Console.Clear();
+
+                Console.WriteLine(" _________________________");
+                Console.WriteLine("|                         |");
+                Console.WriteLine("| Automobile renta-a-car  | ");
+                Console.WriteLine("|_________________________|");
+                Console.WriteLine("|                         |");
+                Console.WriteLine("|  1. Gestor de veiculos  |");
+                Console.WriteLine("|                         |");
+                Console.WriteLine("|  2. Alugar veículo      |");
+                Console.WriteLine("|                         |");
+                Console.WriteLine("|  3. Relatorios veículos |");
+                Console.WriteLine("|                         |");
+                Console.WriteLine("|  4. Sair                |");
+                Console.WriteLine("|_________________________|");
+
+                Console.WriteLine("\nSelecione uma opção: ");
+
+
+
 
                 int opcao;
                 if (!int.TryParse(Console.ReadLine(), out opcao))
@@ -28,13 +45,16 @@ namespace Projeto_UFCD5089
                 switch (opcao)
                 {
                     case 1:
-                        AdicionarVeiculo();
+                        Console.Clear();
+                        MenuGestorVeiculos();
                         break;
                     case 2:
-                        AlugarVeiculo();
+                        Console.Clear();
+                        MenuAluguer();
                         break;
                     case 3:
-                        ListarVeiculos();
+                        Console.Clear();
+                        MenuRelatorios();
                         break;
                     case 4:
                         sair = true;
@@ -46,6 +66,146 @@ namespace Projeto_UFCD5089
             }
             
         }
+        private static void MenuGestorVeiculos()
+        {
+            bool voltar = false;
+
+            while (!voltar)
+            {
+                Console.Clear();
+
+                Console.WriteLine(" __________________________");
+                Console.WriteLine("|                          |");
+                Console.WriteLine("|   Gestor de Veículos     |");
+                Console.WriteLine("|__________________________|");
+                Console.WriteLine("|                          |");
+                Console.WriteLine("|  1. Adicionar Veículo    |");
+                Console.WriteLine("|  2. Remover Veículo      |");
+                Console.WriteLine("|  3. Adicionar Manutenção |");
+                Console.WriteLine("|  4. Remover Manutenção   |");
+                Console.WriteLine("|  5. Voltar               |");
+                Console.WriteLine("|__________________________|");
+                Console.WriteLine("\nSelecione uma opção: ");
+
+
+                int opcao;
+                if (!int.TryParse(Console.ReadLine(), out opcao))
+                {
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    continue;
+                }
+
+                switch (opcao)
+                {
+                    case 1:
+
+                        AdicionarVeiculo();
+                        break;
+                    case 2:
+
+                        //RemoverVeiculo();
+                        break;
+                    case 3:
+                        //AdicionarManutencao();
+                        break;
+                    case 4:
+
+                        //RemoverManutencao();
+                        break;
+                    case 5:
+                        voltar = true;
+                        break;
+                    default:
+                        Console.WriteLine("Opção inválida. Tente novamente.");
+                        break;
+                }
+            }
+        }
+        
+        private static void MenuAluguer()
+        {
+            Console.Clear();
+
+            Console.WriteLine(" ____________________________");
+            Console.WriteLine("|                            |");
+            Console.WriteLine("|          Aluguer           |");
+            Console.WriteLine("|____________________________|");
+            Console.WriteLine("|                            |");
+            Console.WriteLine("|  1. Selecionar veículo     |");
+            Console.WriteLine("|  2. Adicionar aluguer      |");
+            Console.WriteLine("|____________________________|");
+            Console.WriteLine("\nSelecione uma opção: ");
+
+            int opcao;
+            if (!int.TryParse(Console.ReadLine(), out opcao))
+            {
+                Console.WriteLine("Opção inválida. Tente novamente.");
+                return;
+            }
+
+            switch (opcao)
+            {
+                case 1:
+                    //QuantidadeVeiculosAlugados();
+                    break;
+                case 2:
+
+                    //QuantidadeVeiculosDisponiveis();
+                    break;         
+                default:
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    break;
+            }
+
+        }
+
+
+        private static void MenuRelatorios()
+        {
+            Console.Clear();
+
+            Console.WriteLine(" ____________________________");
+            Console.WriteLine("|                            |");
+            Console.WriteLine("|        Relatórios          |");
+            Console.WriteLine("|____________________________|");
+            Console.WriteLine("|                            |");
+            Console.WriteLine("|  1. Veículos Alugados      |");
+            Console.WriteLine("|  2. Veículos Disponíveis   |");
+            Console.WriteLine("|  3. Valor Pago por Aluguer |");
+            Console.WriteLine("|  4. Voltar                 |");
+            Console.WriteLine("|____________________________|");
+            Console.WriteLine("\nSelecione uma opção: ");
+
+
+            int opcao;
+            if (!int.TryParse(Console.ReadLine(), out opcao))
+            {
+                Console.WriteLine("Opção inválida. Tente novamente.");
+                return;
+            }
+
+            switch (opcao)
+            {
+                case 1:
+                    //VeiculosAlugados();
+                    break;
+                case 2:
+                    //VeiculosDisponiveis();
+                    break;
+                case 3:
+                    //ValorPagoAluguer();
+                    break;
+                case 4:
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    break;
+            }
+        }
+
+
+
+
 
         private static void AlugarVeiculo()
         {
