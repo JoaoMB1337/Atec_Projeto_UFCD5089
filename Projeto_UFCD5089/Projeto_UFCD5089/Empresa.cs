@@ -100,7 +100,11 @@ namespace Projeto_UFCD5089
 
          public void MostrarVeiculosDisponiveis()
          {
-            Console.WriteLine("Veículos Disponíveis para Aluguel:");
+            Console.WriteLine(" ____________________________________");
+            Console.WriteLine("|                                    | ");
+            Console.WriteLine("|  Veículos Disponíveis para Aluguel |");
+            Console.WriteLine("|____________________________________|");
+
             int count = 0;
 
             foreach (Veiculo veiculo in listaVeiculos)
@@ -136,7 +140,10 @@ namespace Projeto_UFCD5089
         
         public void MostrarTodosVeiculos()
         {
-            Console.WriteLine("Lista de Veículos:");
+            Console.WriteLine(" ___________________");
+            Console.WriteLine("|                   | ");
+            Console.WriteLine("| Lista de Veículos |");
+            Console.WriteLine("|___________________|");
 
             if (listaVeiculos.Count > 0)
             {
@@ -192,7 +199,7 @@ namespace Projeto_UFCD5089
                 if (veiculo.StatusManutencao != false)
                 {
                     double valorTotalAluguer = veiculo.ValorAluguerDiario * diasAluguer;
-                    Console.WriteLine($"Valor total do aluguer: R${valorTotalAluguer}");
+                    Console.WriteLine($"Valor total do aluguer: €{valorTotalAluguer}");
                 }
                 else
                 {
@@ -228,7 +235,7 @@ namespace Projeto_UFCD5089
                 if (veiculo.StatusManutencao != true)
                 {
                     double valorTotalAluguer = veiculo.ValorAluguerDiario * diasAluguer;
-                    Console.WriteLine($"Valor total do aluguer: R${valorTotalAluguer}");
+                    Console.WriteLine($"Valor total do aluguer: €{valorTotalAluguer}");
                     Console.ReadKey();
                 }
                 else
@@ -244,7 +251,11 @@ namespace Projeto_UFCD5089
 
         public void ListarVeiculosAlugados()
         {
-            Console.WriteLine("Veículos Alugados:");
+            Console.WriteLine(" _________________");
+            Console.WriteLine("|                 |");
+            Console.WriteLine("|Veículos Alugados|");
+            Console.WriteLine("|_________________|");
+
             int count = 0;
 
             foreach (Veiculo veiculo in listaVeiculos)
@@ -272,7 +283,10 @@ namespace Projeto_UFCD5089
 
         public void listarVeiculosDisponiveisParaAluguer()
         {
-            Console.WriteLine("Veículos Disponíveis para Aluguer:");
+            Console.WriteLine(" ________________________________________");
+            Console.WriteLine("|                                        |");
+            Console.WriteLine("|    Veículos Disponíveis para Aluguer   |");
+            Console.WriteLine("|________________________________________|\n");
             int count = 0;
 
             foreach (Veiculo veiculo in listaVeiculos)

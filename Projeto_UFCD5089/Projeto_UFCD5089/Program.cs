@@ -30,7 +30,7 @@ namespace Projeto_UFCD5089
                 Console.WriteLine("|  4. Sair                |");
                 Console.WriteLine("|_________________________|");
 
-                Console.WriteLine("\nSelecione uma opção: ");
+                Console.Write("\nSelecione uma opção: ");
                 int opcao;
                 if (!int.TryParse(Console.ReadLine(), out opcao))
                 {
@@ -82,7 +82,7 @@ namespace Projeto_UFCD5089
                 Console.WriteLine("|  4. Remover Manutenção   |");
                 Console.WriteLine("|  5. Voltar               |");
                 Console.WriteLine("|__________________________|");
-                Console.WriteLine("\nSelecione uma opção: ");
+                Console.Write("\nSelecione uma opção: ");
 
 
                 int opcao;
@@ -128,7 +128,7 @@ namespace Projeto_UFCD5089
             Console.WriteLine("|  1. Selecionar veículo     |");
             Console.WriteLine("|  2. Adicionar aluguer      |");
             Console.WriteLine("|____________________________|");
-            Console.WriteLine("\nSelecione uma opção: ");
+            Console.Write("\nSelecione uma opção: ");
 
             int opcao;
             if (!int.TryParse(Console.ReadLine(), out opcao))
@@ -166,7 +166,7 @@ namespace Projeto_UFCD5089
             Console.WriteLine("|  3. Valor Pago por Aluguer |");
             Console.WriteLine("|  4. Voltar                 |");
             Console.WriteLine("|____________________________|");
-            Console.WriteLine("\nSelecione uma opção: ");
+            Console.Write("\nSelecione uma opção: ");
 
 
             int opcao;
