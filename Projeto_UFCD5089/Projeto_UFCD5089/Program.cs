@@ -201,7 +201,7 @@ namespace Projeto_UFCD5089
         private static void AlugarVeiculo()
         {
             rentCar.MostrarVeiculosDisponiveis();
-            Console.Write("Qual e o veiculo a alugar: ");
+            //Console.Write("Qual e o veiculo a alugar: ");
             int index = int.Parse(Console.ReadLine());
             rentCar.AlugarVeiculo(index);
         }

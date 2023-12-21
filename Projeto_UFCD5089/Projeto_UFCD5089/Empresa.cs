@@ -107,7 +107,7 @@ namespace Projeto_UFCD5089
          {
             Console.WriteLine(" ____________________________________");
             Console.WriteLine("|                                    | ");
-            Console.WriteLine("|  Veículos Disponíveis para Aluguer |");
+            Console.WriteLine("|        Veículos Disponíveis        |");
             Console.WriteLine("|____________________________________|");
 
             int count = 0;
