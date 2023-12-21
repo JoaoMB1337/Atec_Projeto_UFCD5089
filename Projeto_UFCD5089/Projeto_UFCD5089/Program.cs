@@ -127,6 +127,7 @@ namespace Projeto_UFCD5089
             Console.WriteLine("|                            |");
             Console.WriteLine("|  1. Selecionar veículo     |");
             Console.WriteLine("|  2. Adicionar aluguer      |");
+            Console.WriteLine("|  3. Voltar                 |");
             Console.WriteLine("|____________________________|");
             Console.Write("\nSelecione uma opção: ");
 
@@ -273,25 +274,28 @@ namespace Projeto_UFCD5089
         private static void RemoverVeiculo()
         {
             rentCar.MostrarVeiculosDisponiveis();
-            Console.WriteLine("Veiculo a remover: ");
+            Console.Write("Veiculo a remover: ");
             int index = int.Parse(Console.ReadLine());
             rentCar.RemoverVeiculo(index);
+            Console.WriteLine("Veiculo removido com sucesso!");
         }
 
         private static void FazerManutencao()
         {
-            rentCar.MostrarVeiculosDisponiveis();
-            Console.WriteLine("Veiculo a meter em manutenção: ");
+            rentCar.MostrarVeiculosDisponiveisManuntencao();
+            Console.Write("Veiculo a meter em manutenção: ");
             int index = int.Parse(Console.ReadLine());
             rentCar.ManutencaoVeiculo(index);
+            Console.WriteLine("Veiculo enviado para a manutenção!");
         }
 
         private static void RemoverDaManutencao()
         {
-            rentCar.MostrarVeiculosDisponiveis();
-            Console.WriteLine("Veiculo a remover da manutenção: ");
+            rentCar.MostrarVeiculosEmManutencao();
+            Console.Write("Veiculo a remover da manutenção: ");
             int index = int.Parse(Console.ReadLine());
             rentCar.RemoverVeiculosManutencao(index);
+            Console.WriteLine("Veiculo removido da manutenção!");
         }
 
         private static void VeiculosAlugados()
