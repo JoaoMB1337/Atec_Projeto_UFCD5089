@@ -32,10 +32,9 @@ namespace Projeto_UFCD5089
 
                 Console.Write("\nSelecione uma opção: ");
                 int opcao;
-                if (!int.TryParse(Console.ReadLine(), out opcao))
+                while (!int.TryParse(Console.ReadLine(), out opcao) || opcao < 1 || opcao > 4)
                 {
-                    Console.WriteLine("Opção inválida. Tente novamente.");
-                    continue;
+                    Console.Write("Selecione uma opção válida: ");
                 }
                 switch (opcao)
                 {
@@ -86,10 +85,9 @@ namespace Projeto_UFCD5089
 
 
                 int opcao;
-                if (!int.TryParse(Console.ReadLine(), out opcao))
+                while (!int.TryParse(Console.ReadLine(), out opcao) || opcao < 1 || opcao > 5)
                 {
-                    Console.WriteLine("Opção inválida. Tente novamente.");
-                    continue;
+                    Console.Write("Selecione uma opção válida: ");
                 }
 
                 switch (opcao)
@@ -132,10 +130,9 @@ namespace Projeto_UFCD5089
             Console.Write("\nSelecione uma opção: ");
 
             int opcao;
-            if (!int.TryParse(Console.ReadLine(), out opcao))
+            while (!int.TryParse(Console.ReadLine(), out opcao) || opcao < 1 || opcao > 3)
             {
-                Console.WriteLine("Opção inválida. Tente novamente.");
-                return;
+                Console.Write("Selecione uma opção válida: ");
             }
 
             switch (opcao)
@@ -169,14 +166,11 @@ namespace Projeto_UFCD5089
             Console.WriteLine("|____________________________|");
             Console.Write("\nSelecione uma opção: ");
 
-
             int opcao;
-            if (!int.TryParse(Console.ReadLine(), out opcao))
+            while (!int.TryParse(Console.ReadLine(), out opcao) || opcao < 1 || opcao > 4)
             {
-                Console.WriteLine("Opção inválida. Tente novamente.");
-                return;
+                Console.Write("Selecione uma opção válida: ");
             }
-
             switch (opcao)
             {
                 case 1:

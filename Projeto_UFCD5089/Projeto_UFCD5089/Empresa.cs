@@ -213,7 +213,7 @@ namespace Projeto_UFCD5089
                 if (index >= 0 && index < listaVeiculos.Count)
                 {
                     listaVeiculos[index].StatusManutencao = false;
-
+                    GestorFicheiros.AtulizarEstadoManutençãoVeiculo(listaVeiculos, @"veiculo.csv");
 
                 }
                 else
