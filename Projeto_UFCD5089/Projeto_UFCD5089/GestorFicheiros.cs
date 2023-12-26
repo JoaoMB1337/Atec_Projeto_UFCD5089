@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using System.Linq;
 
 namespace Projeto_UFCD5089
 {
@@ -15,6 +13,11 @@ namespace Projeto_UFCD5089
 
             try
             {
+                if (!File.Exists(caminhoArquivo))
+                {
+                    File.Create(caminhoArquivo).Close();
+                }
+
                 using (StreamReader sr = new StreamReader(caminhoArquivo))
                 {
                     string linha;
@@ -37,9 +40,13 @@ namespace Projeto_UFCD5089
                     }
                 }
             }
-            catch (Exception e)
+            catch (FileNotFoundException)
             {
-                Console.WriteLine("Ocorreu um erro ao ler o arquivo: " + e.Message);
+                Console.WriteLine("O arquivo não foi encontrado.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ocorreu um erro: {ex.Message}");
             }
 
             return listaVeiculos;
@@ -48,19 +55,26 @@ namespace Projeto_UFCD5089
         public static int ObterUltimoId(string caminhoArquivo)
         {
             int ultimoId = 0;
-
-            if (File.Exists(caminhoArquivo))
+            try
             {
-                string[] linhas = File.ReadAllLines(caminhoArquivo);
-
-                if (linhas.Length > 0)
+                if (File.Exists(caminhoArquivo))
                 {
-                    var ids = linhas.Select(line => int.Parse(line.Split(',')[0]));
-                    ultimoId = ids.Max();
+                    string[] linhas = File.ReadAllLines(caminhoArquivo);
+
+                    if (linhas.Length > 0)
+                    {
+                        var ids = linhas.Select(line => int.Parse(line.Split(',')[0]));
+                        ultimoId = ids.Max();
+                    }
                 }
             }
-
-            Veiculo.DefinirUltimoId(ultimoId); // Define o último ID na classe Veiculo
+            catch (FileNotFoundException){
+                Console.WriteLine("O arquivo não foi encontrado.");
+            }
+            catch (IOException ex){
+                Console.WriteLine($"Ocorreu um erro: {ex.Message}");
+            }
+            Veiculo.DefinirUltimoId(ultimoId); 
             return ultimoId;
         }
 
@@ -68,6 +82,10 @@ namespace Projeto_UFCD5089
         {
             try
             {
+                if (!File.Exists(nomeArquivo))
+                {
+                    File.Create(nomeArquivo).Close(); 
+                }
                 using (StreamWriter sw = new StreamWriter(nomeArquivo))
                 {
                     foreach (Veiculo veiculo in listaVeiculos)
@@ -82,7 +100,7 @@ namespace Projeto_UFCD5089
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ocorreu um erro ao escrever no arquivo: {ex.Message}");
+                Console.WriteLine($"Ocorreu um erro: {ex.Message}");
             }
         }
 
@@ -90,6 +108,11 @@ namespace Projeto_UFCD5089
         {
             try
             {
+                if (!File.Exists(nomeArquivo))
+                {
+                    File.Create(nomeArquivo).Close();
+                }
+
                 using (StreamWriter sw = new StreamWriter(nomeArquivo))
                 {
                     foreach (Veiculo veiculo in listaVeiculos)
@@ -105,15 +128,19 @@ namespace Projeto_UFCD5089
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ocorreu um erro ao atualizar o arquivo: {ex.Message}");
+                Console.WriteLine($"Ocorreu um erro: {ex.Message}");
             }
-
         }
 
         public static void AtulizarEstadoManutençãoVeiculo(List<Veiculo> listaVeiculos, string nomeArquivo)
         {
             try
             {
+                if (!File.Exists(nomeArquivo))
+                {
+                   File.Create(nomeArquivo).Close(); 
+                }
+
                 using (StreamWriter sw = new StreamWriter(nomeArquivo))
                 {
                     foreach (Veiculo veiculo in listaVeiculos)
@@ -125,13 +152,12 @@ namespace Projeto_UFCD5089
                     }
                 }
 
-                Console.WriteLine($"O estado de aluguel foi atualizado no arquivo '{nomeArquivo}' com sucesso!");
+                Console.WriteLine($"O estado de manutenção foi atualizado no arquivo '{nomeArquivo}' com sucesso!");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ocorreu um erro ao atualizar o arquivo: {ex.Message}");
+                Console.WriteLine($"Ocorreu um erro: {ex.Message}");
             }
-
         }
     }
 }

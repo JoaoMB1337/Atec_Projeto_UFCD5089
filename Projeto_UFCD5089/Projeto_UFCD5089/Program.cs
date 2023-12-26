@@ -14,7 +14,7 @@ namespace Projeto_UFCD5089
             {
                 Console.Clear();
 
-                rentCar.CarregarVeiculosDoArquivo("veiculo.csv");
+                rentCar.CarregarVeiculosDoArquivo(@"veiculo.csv");
 
                 Console.WriteLine(" _________________________");
                 Console.WriteLine("|                         |");
@@ -201,9 +201,13 @@ namespace Projeto_UFCD5089
         private static void AlugarVeiculo()
         {
             rentCar.MostrarVeiculosDisponiveis();
-            //Console.Write("Qual e o veiculo a alugar: ");
-            int index = int.Parse(Console.ReadLine());
-            rentCar.AlugarVeiculo(index);
+            try{
+                int index = int.Parse(Console.ReadLine());
+                rentCar.AlugarVeiculo(index);
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex); 
+            }
         }
 
         private static void ListarVeiculos()
@@ -268,7 +272,7 @@ namespace Projeto_UFCD5089
 
             //Quando se cria o veh. o status e manutenção ainda nao são contados
             Veiculo novoVeiculo = new Veiculo(numeroPortas, tipoCaixa, cilindrada, numeroEixos, maxPassageiros, pesoMaximo, valorAluguerDiario, false, false);
-            rentCar.AddVeiculo(novoVeiculo);
+            rentCar.AdicionarVeiculo(novoVeiculo);
         }
        
         private static void RemoverVeiculo()
@@ -294,7 +298,7 @@ namespace Projeto_UFCD5089
             rentCar.MostrarVeiculosEmManutencao();
             Console.Write("Veiculo a remover da manutenção: ");
             int index = int.Parse(Console.ReadLine());
-            rentCar.RemoverVeiculosManutencao(index);
+            rentCar.RemoverVeiculoManutencao(index);
             Console.WriteLine("Veiculo removido da manutenção!");
         }
 
@@ -305,7 +309,7 @@ namespace Projeto_UFCD5089
 
         private static void VeiculosDisponiveisAluguer()
         {
-            rentCar.listarVeiculosDisponiveisParaAluguer();
+            rentCar.ListarVeiculosDisponiveisParaAluguer();
         }
 
         private static void ValorPagoAluguer()
@@ -315,7 +319,7 @@ namespace Projeto_UFCD5089
             int index = int.Parse(Console.ReadLine());
             Console.WriteLine("Dias aluguer veiculo");
             int dias = int.Parse(Console.ReadLine());
-            rentCar.ValorAluguer(index, dias);
+            rentCar.CalcularValorAluguer(index, dias);
         }
 
     }
