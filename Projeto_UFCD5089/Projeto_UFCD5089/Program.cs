@@ -200,7 +200,7 @@ namespace Projeto_UFCD5089
 
         private static void AlugarVeiculo()
         {
-            rentCar.MostrarVeiculosDisponiveis();
+            rentCar.ListarVeiculosDisponiveisParaAluguer();
             try{
                 int index = int.Parse(Console.ReadLine());
                 rentCar.AlugarVeiculo(index);
@@ -212,7 +212,7 @@ namespace Projeto_UFCD5089
 
         private static void ListarVeiculos()
         {
-            rentCar.MostrarVeiculosDisponiveis(); 
+            rentCar.ListarVeiculosAlugados(); 
         }
 
         private static void AdicionarVeiculo()
@@ -277,7 +277,7 @@ namespace Projeto_UFCD5089
        
         private static void RemoverVeiculo()
         {
-            rentCar.MostrarVeiculosDisponiveis();
+            rentCar.ListarVeiculosDisponiveisParaAluguer();
             Console.Write("Veiculo a remover: ");
             int index = int.Parse(Console.ReadLine());
             rentCar.RemoverVeiculo(index);
@@ -314,7 +314,7 @@ namespace Projeto_UFCD5089
 
         private static void ValorPagoAluguer()
         {
-            rentCar.MostrarVeiculosDisponiveis();
+            rentCar.ListarVeiculosDisponiveisParaAluguer();
             Console.WriteLine("Veiculo a alugar.");
             int index = int.Parse(Console.ReadLine());
             Console.WriteLine("Dias aluguer veiculo");

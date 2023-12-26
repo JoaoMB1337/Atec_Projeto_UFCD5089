@@ -172,30 +172,6 @@ namespace Projeto_UFCD5089
             
         }
 
-        public void MostrarVeiculosDisponiveis()
-         {
-            Console.WriteLine(" ____________________________________");
-            Console.WriteLine("|                                    | ");
-            Console.WriteLine("|        Veículos Disponíveis        |");
-            Console.WriteLine("|____________________________________|");
-
-            int count = 0;
-
-            foreach (Veiculo veiculo in listaVeiculos)
-            {
-                if (!veiculo.StatusAluguer && !veiculo.StatusManutencao)
-                {
-                    count++;
-                    ExibirDetalhesVeiculo(veiculo);
-                }
-            }
-
-            if (count == 0)
-            {
-                Console.WriteLine("Não há veículos disponíveis para aluguel no momento.");
-            }
-         }
-
         public void MostrarVeiculosDisponiveisManuntencao()
         {
             Console.WriteLine(" ____________________________________________");
