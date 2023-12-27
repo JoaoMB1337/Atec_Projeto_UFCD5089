@@ -32,10 +32,9 @@ namespace Projeto_UFCD5089
 
                 Console.Write("\nSelecione uma opção: ");
                 int opcao;
-                if (!int.TryParse(Console.ReadLine(), out opcao))
+                while (!int.TryParse(Console.ReadLine(), out opcao) || opcao < 1 || opcao > 4)
                 {
-                    Console.WriteLine("Opção inválida. Tente novamente.");
-                    continue;
+                    Console.Write("Opção inválida. Tente novamente: ");
                 }
                 switch (opcao)
                 {
@@ -86,10 +85,9 @@ namespace Projeto_UFCD5089
 
 
                 int opcao;
-                if (!int.TryParse(Console.ReadLine(), out opcao))
+                while (!int.TryParse(Console.ReadLine(), out opcao) || opcao < 1 || opcao > 5)
                 {
-                    Console.WriteLine("Opção inválida. Tente novamente.");
-                    continue;
+                    Console.Write("Opção inválida. Tente novamente: ");
                 }
 
                 switch (opcao)
@@ -125,17 +123,17 @@ namespace Projeto_UFCD5089
             Console.WriteLine("|          Aluguer           |");
             Console.WriteLine("|____________________________|");
             Console.WriteLine("|                            |");
-            Console.WriteLine("|  1. Selecionar veículo     |");
-            Console.WriteLine("|  2. Adicionar aluguer      |");
-            Console.WriteLine("|  3. Voltar                 |");
+            Console.WriteLine("|  1. Selecionar Veículo     |");
+            Console.WriteLine("|  2. Adicionar Aluguer      |");
+            Console.WriteLine("|  3. Retirar Aluguer        |");
+            Console.WriteLine("|  4. Voltar                 |");
             Console.WriteLine("|____________________________|");
             Console.Write("\nSelecione uma opção: ");
 
             int opcao;
-            if (!int.TryParse(Console.ReadLine(), out opcao))
+            while (!int.TryParse(Console.ReadLine(), out opcao) || opcao < 1 || opcao > 4)
             {
-                Console.WriteLine("Opção inválida. Tente novamente.");
-                return;
+                Console.Write("Opção inválida. Tente novamente: ");
             }
 
             switch (opcao)
@@ -144,8 +142,11 @@ namespace Projeto_UFCD5089
                     AlugarVeiculo();
                     break;
                 case 2:
-                    ListarVeiculos();
-                    break;         
+                    AdicionarAluguer();
+                    break;     
+                case 3:
+                    RetirarAlguer();
+                    break;
                 default:
                     Console.WriteLine("Opção inválida. Tente novamente.");
                     break;
@@ -171,10 +172,9 @@ namespace Projeto_UFCD5089
 
 
             int opcao;
-            if (!int.TryParse(Console.ReadLine(), out opcao))
+            while (!int.TryParse(Console.ReadLine(), out opcao) || opcao < 1 || opcao > 4)
             {
-                Console.WriteLine("Opção inválida. Tente novamente.");
-                return;
+                Console.Write("Opção inválida. Tente novamente: ");
             }
 
             switch (opcao)
@@ -320,6 +320,24 @@ namespace Projeto_UFCD5089
             Console.WriteLine("Dias aluguer veiculo");
             int dias = int.Parse(Console.ReadLine());
             rentCar.CalcularValorAluguer(index, dias);
+        }
+
+        private static void AdicionarAluguer()
+        {
+            rentCar.ListarVeiculosDisponiveisParaAluguer();
+            Console.WriteLine("Veiculo a alugar.");
+            int index = int.Parse(Console.ReadLine());
+            Console.WriteLine("Dias aluguer veiculo");
+            int dias = int.Parse(Console.ReadLine());
+            rentCar.AdicionarAluguer(index, dias);
+        }
+
+        private static void RetirarAlguer()
+        {
+            rentCar.ListarVeiculosAlugados();
+            Console.WriteLine("Veiculo a retirar do aluguer.");
+            int index = int.Parse(Console.ReadLine());
+            rentCar.RetirarAluguer(index);
         }
 
     }
