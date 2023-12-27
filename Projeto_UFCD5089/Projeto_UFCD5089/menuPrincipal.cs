@@ -264,13 +264,13 @@ namespace Projeto_UFCD5089
                 Console.Write("Informe o número de eixos do veículo: ");
                 string input = Console.ReadLine();
 
-                if (int.TryParse(input, out numeroEixos) && numeroEixos >= 1 && numeroEixos <= 3)
+                if (int.TryParse(input, out numeroEixos) && numeroEixos > 1 && numeroEixos <= 3)
                 {
                     break;
                 }
                 else
                 {
-                    Console.WriteLine("Por favor, insira um número válido de 1 a 3.");
+                    Console.WriteLine("Por favor, insira um número válido de 2 ou 3.");
                 }
 
             } while (true);
