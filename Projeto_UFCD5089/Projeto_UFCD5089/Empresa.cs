@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Projeto_UFCD5089
 {
     internal class Empresa
     {
-        List<Veiculo> listaVeiculos = new List<Veiculo>();
+        public List<Veiculo> listaVeiculos = new List<Veiculo>();
 
         private static void ExibirDetalhesVeiculo(Veiculo veiculo)
         {
@@ -24,8 +25,8 @@ namespace Projeto_UFCD5089
             Console.WriteLine("\n");
         }
 
-        public void CarregarVeiculosDoArquivo(string caminhoArquivo)
-        {
+        public void CarregarVeiculosDoArquivo(string caminhoArquivo){
+
             int ultimoId = GestorFicheiros.ObterUltimoId(caminhoArquivo);
             Veiculo.DefinirUltimoId(ultimoId);
             listaVeiculos = GestorFicheiros.CarregarListaViaArquivo(caminhoArquivo);
@@ -33,141 +34,181 @@ namespace Projeto_UFCD5089
 
 
         #region Metodos de Edição de Veiculos
-        public void AdicionarVeiculo(Veiculo veiculo)
+
+        public bool AdicionarVeiculo(Veiculo veiculo)
         {
-            if (!listaVeiculos.Contains(veiculo))
+            try
             {
-                listaVeiculos.Add(veiculo);
-                GestorFicheiros.EscreverCSV(listaVeiculos, @"veiculo.csv");
-                Console.WriteLine("Veículo adicionado com sucesso!");
+                if (!listaVeiculos.Contains(veiculo)){
+                    listaVeiculos.Add(veiculo);
+                    GestorFicheiros.EscreverCSV(listaVeiculos, @"veiculo.csv");
+                    return true; 
+                }
+                else{
+                    return false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("O veículo já existe na lista.");
+                Console.WriteLine($"Error: {ex}");
+                return false;
             }
         }
 
-        public void AlugarVeiculo(int index)
+        public bool RemoverVeiculo(int index)
         {
-            if (index >= 0 && index < listaVeiculos.Count)
-            {
-                if (!listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
-                {
-                    listaVeiculos[index].StatusAluguer = true;
-                    GestorFicheiros.AtualizarEstadoAluguelVeiculo(listaVeiculos, @"veiculo.csv");
-                    Console.WriteLine($"Veiculo {index + 1} alugado com sucesso!");
-                }
-                else
-                {
-                    Console.WriteLine("Veiculo nao disponivel para aluguel.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Indice de veiculo invalido.");
-            }
-
-        }
-
-        public void ManutencaoVeiculo(int index)
-        {
-            if (index >= 0 && index < listaVeiculos.Count)
-            {
-                if (!listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
-                {
-                    listaVeiculos[index].StatusManutencao = true;
-                    GestorFicheiros.AtulizarEstadoManutençãoVeiculo(listaVeiculos, @"veiculo.csv");
-                    Console.WriteLine($"Veículo {index + 1} colocado em manutenção com sucesso!");
-                }
-                else
-                {
-                    Console.WriteLine("Veículo não disponível para manutenção.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Índice de veículo inválido.");
-            }
-        }
-
-        public void RemoverVeiculo(int index)
-        {
-            if (index >= 0 && index < listaVeiculos.Count)
-            {
-                listaVeiculos.RemoveAt(index);
-                GestorFicheiros.EscreverCSV(listaVeiculos, @"veiculo.csv");
-                Console.WriteLine($"Veículo {index + 1} removido com sucesso!");
-            }
-            else
-            {
-                Console.WriteLine("Índice de veículo inválido.");
-            }
-        }
-
-        public void RemoverVeiculoManutencao(int index)
-        {
-            if (!listaVeiculos[index].StatusAluguer && listaVeiculos[index].StatusManutencao)
+            try
             {
                 if (index >= 0 && index < listaVeiculos.Count)
                 {
-                    listaVeiculos[index].StatusManutencao = false;
+                    listaVeiculos.RemoveAt(index);
+                    GestorFicheiros.EscreverCSV(listaVeiculos, @"veiculo.csv");
+                    return true;
                 }
                 else
                 {
-                    Console.WriteLine("Veículo não disponível para manutenção.");
+                    return false;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Índice de veículo inválido.");
+                Console.WriteLine($"Error: {ex.ToString()}");
+            }
+            return false;
+        }
+
+
+        public bool AdicionarManutencaoVeiculo(int index)
+        {
+            try
+            {
+                if (index >= 0 && index < listaVeiculos.Count)
+                {
+                    if (!listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
+                    {
+                        listaVeiculos[index].StatusManutencao = true;
+                        GestorFicheiros.AtulizarEstadoManutençãoVeiculo(listaVeiculos, @"veiculo.csv");
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Veículo não disponível para manutenção.");
+                        return false; ;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Índice de veículo inválido.");
+                    return false;
+                }
+            }
+            catch(Exception ex) {
+                Console.WriteLine($"Error: {ex}");
+                return false;
+            }
+            
+        }
+
+        public bool RemoverManutencaoVeiculo(int index)
+        {
+            try
+            {
+                if (!listaVeiculos[index].StatusAluguer && listaVeiculos[index].StatusManutencao)
+                {
+                    if (index >= 0 && index < listaVeiculos.Count)
+                    {
+                        listaVeiculos[index].StatusManutencao = false;
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Veículo não disponível para manutenção.");
+                        return false;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Índice de veículo inválido.");
+                    return false;
+                }
+            }
+            catch(Exception ex) {
+                Console.WriteLine($"Error: {ex}");
+                return false;
             }
         }
 
-        //public void RemoverVeiculoAluguer(int index)
-        //{
-        //    if (!listaVeiculos[index].StatusAluguer && listaVeiculos[index].StatusManutencao)
-        //    {
-        //        if (index >= 0 && index < listaVeiculos.Count)
-        //        {
-        //            listaVeiculos[index].StatusManutencao = false;
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine("Veículo não disponível para manutenção.");
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("Índice de veículo inválido.");
-        //    }
-        //}
 
-        public void AdicionarAluguer(int index, int dias)
+        public bool AdicionarAluguerVeiculo(int index)
         {
-            if (index >= 0 && index < listaVeiculos.Count)
+            try
             {
-                if (!listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
+                if (index >= 0 && index < listaVeiculos.Count && !listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
                 {
                     listaVeiculos[index].StatusAluguer = true;
                     GestorFicheiros.AtualizarEstadoAluguelVeiculo(listaVeiculos, @"veiculo.csv");
-                    Console.WriteLine($"Veiculo {index + 1} alugado com sucesso!");
+
+                    return true;
                 }
                 else
                 {
-                    Console.WriteLine("Veiculo nao disponivel para aluguel.");
+                    Console.WriteLine("Veículo não disponível para aluguel.");
+                    return false;
+
                 }
             }
-            else
-            {
-                Console.WriteLine("Indice de veiculo invalido.");
+            catch (Exception ex){
+                Console.WriteLine($"Error: {ex}");
+                return false;
             }
-
-        }
-        
             
+            
+        }
+
+        public bool RetirarAluguerVeiculo(int index)
+        {
+            try
+            {
+                if (index >= 0 && index < listaVeiculos.Count)
+                {
+                    if (listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
+                    {
+                        listaVeiculos[index].StatusAluguer = false;
+                        GestorFicheiros.AtualizarEstadoAluguelVeiculo(listaVeiculos, @"veiculo.csv");
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Veículo não disponível para devolução.");
+                        return false;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Índice de veículo inválido.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex}");
+                return false;
+            }
+            
+        }
+
+        public double CalcularValorAluguer(int index, int diasAluguer)
+        {
+            if (index >= 0 && index < listaVeiculos.Count && diasAluguer > 0 && !listaVeiculos[index].StatusManutencao && !listaVeiculos[index].StatusAluguer)
+            {
+                Veiculo veiculo = listaVeiculos[index];
+                return veiculo.ValorAluguerDiario * diasAluguer;
+            }
+            Console.WriteLine("Veículo em manutenção ou já em aluguer!");
+            return 0;
+        }
 
         #endregion
-
 
         #region Listagens
 
@@ -184,8 +225,9 @@ namespace Projeto_UFCD5089
             {
                 if (veiculo.StatusManutencao)
                 {
-                    count++;
+                    Console.WriteLine($"Veiculo: {count}");
                     ExibirDetalhesVeiculo(veiculo);
+                    count ++;
                 }
             }
 
@@ -208,8 +250,9 @@ namespace Projeto_UFCD5089
             {
                 if (!veiculo.StatusAluguer && !veiculo.StatusManutencao)
                 {
-                    count++;
+                    Console.WriteLine($"Veiculo: {count}");
                     ExibirDetalhesVeiculo(veiculo);
+                    count++;
                 }
             }
 
@@ -233,8 +276,9 @@ namespace Projeto_UFCD5089
             {
                 if (veiculo.StatusAluguer)
                 {
-                    count++;
+                    Console.WriteLine($"Veiculo: {count}");
                     ExibirDetalhesVeiculo(veiculo);
+                    count++;
                 }
             }
 
@@ -255,9 +299,12 @@ namespace Projeto_UFCD5089
             foreach (Veiculo veiculo in listaVeiculos)
             {
                 if (!veiculo.StatusAluguer && !veiculo.StatusManutencao)
-                {
-                    count++;
+                {    
+                    Console.WriteLine($"VEICULO: {count} ");
                     ExibirDetalhesVeiculo(veiculo);
+                    Console.WriteLine("-----------------------------------------");
+                    count++;
+
                 }
             }
 
@@ -267,55 +314,7 @@ namespace Projeto_UFCD5089
             }
         }
 
-        public void RetirarAluguer(int index)
-        {
-            if (index >= 0 && index < listaVeiculos.Count)
-            {
-                if (listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
-                {
-                    listaVeiculos[index].StatusAluguer = false;
-                    GestorFicheiros.AtualizarEstadoAluguelVeiculo(listaVeiculos, @"veiculo.csv");
-                    Console.WriteLine($"Veículo {index + 1} devolvido com sucesso!");
-                }
-                else
-                {
-                    Console.WriteLine("Veículo não disponível para devolução.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Índice de veículo inválido.");
-            }
-
-        }
-        
-
-           
-
         #endregion
-
-        public void CalcularValorAluguer(int index, int diasAluguer)
-        {
-            if (index >= 0 && index < listaVeiculos.Count && diasAluguer > 0)
-            {
-                Veiculo veiculo = listaVeiculos[index];
-
-                if (veiculo.StatusManutencao != true)
-                {
-                    double valorTotalAluguer = veiculo.ValorAluguerDiario * diasAluguer;
-                    Console.WriteLine($"Valor total do aluguer: €{valorTotalAluguer}");
-                    Console.ReadKey();
-                }
-                else
-                {
-                    Console.WriteLine("Veiculo em manutenção.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Indice inválido");
-            }
-        }
 
     }
 }
