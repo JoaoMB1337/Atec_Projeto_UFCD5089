@@ -228,8 +228,9 @@ namespace Projeto_UFCD5089
                     Console.WriteLine($"|   Veiculo: {count}   |");
                     Console.WriteLine("|________________|"); ;
                     ExibirDetalhesVeiculo(veiculo);
-                    count ++;
                 }
+                count++;
+
             }
 
             if (count == 0)
@@ -260,8 +261,9 @@ namespace Projeto_UFCD5089
                     Console.WriteLine($"|   Veiculo: {count}   |");
                     Console.WriteLine("|________________|");
                     ExibirDetalhesVeiculo(veiculo);
-                    count++;
                 }
+                count++;
+
             }
 
             if (count == 0)
@@ -290,9 +292,9 @@ namespace Projeto_UFCD5089
                     Console.WriteLine($"|   Veiculo: {count}   |");
                     Console.WriteLine("|________________|");
                     ExibirDetalhesVeiculo(veiculo);
-                    count++;
-
                 }
+                count++;
+
             }
 
             if (count == 0)
