@@ -223,7 +223,10 @@ namespace Projeto_UFCD5089
             {
                 if (veiculo.StatusManutencao)
                 {
-                    Console.WriteLine($"Veiculo: {count}");
+                    Console.WriteLine(" ________________");
+                    Console.WriteLine("|                |");
+                    Console.WriteLine($"|   Veiculo: {count}   |");
+                    Console.WriteLine("|________________|"); ;
                     ExibirDetalhesVeiculo(veiculo);
                     count ++;
                 }
@@ -252,7 +255,10 @@ namespace Projeto_UFCD5089
             {
                 if (veiculo.StatusAluguer)
                 {
-                    Console.WriteLine($"Veiculo: {count}");
+                    Console.WriteLine(" ________________");
+                    Console.WriteLine("|                |");
+                    Console.WriteLine($"|   Veiculo: {count}   |");
+                    Console.WriteLine("|________________|");
                     ExibirDetalhesVeiculo(veiculo);
                     count++;
                 }
@@ -278,8 +284,11 @@ namespace Projeto_UFCD5089
             foreach (Veiculo veiculo in listaVeiculos)
             {
                 if (!veiculo.StatusAluguer && !veiculo.StatusManutencao)
-                {    
-                    Console.WriteLine($"VEICULO: {count} ");
+                {
+                    Console.WriteLine(" ________________");
+                    Console.WriteLine("|                |");
+                    Console.WriteLine($"|   Veiculo: {count}   |");
+                    Console.WriteLine("|________________|");
                     ExibirDetalhesVeiculo(veiculo);
                     Console.WriteLine("-----------------------------------------");
                     count++;
