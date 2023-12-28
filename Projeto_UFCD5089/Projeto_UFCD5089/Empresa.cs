@@ -272,6 +272,7 @@ namespace Projeto_UFCD5089
                 Console.ReadKey();
                 return false;
             }
+            Console.ReadKey();
             return true;
         }
 
@@ -303,6 +304,7 @@ namespace Projeto_UFCD5089
                 Console.ReadKey();
                 return false;
             }
+            Console.ReadKey();
             return true;
         }
 
