@@ -72,7 +72,7 @@ namespace Projeto_UFCD5089
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.ToString()}");
+                Console.WriteLine($"Error: {ex}");
             }
             return false;
         }
@@ -82,23 +82,15 @@ namespace Projeto_UFCD5089
         {
             try
             {
-                if (index >= 0 && index < listaVeiculos.Count)
+                if(index >= 0 && index < listaVeiculos.Count && !listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
                 {
-                    if (!listaVeiculos[index].StatusAluguer && !listaVeiculos[index].StatusManutencao)
-                    {
-                        listaVeiculos[index].StatusManutencao = true;
-                        GestorFicheiros.AtulizarEstadoManutençãoVeiculo(listaVeiculos, @"veiculo.csv");
-                        return true;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Veículo não disponível para manutenção.");
-                        return false; ;
-                    }
+                    listaVeiculos[index].StatusManutencao = true;
+                    GestorFicheiros.AtulizarEstadoManutençãoVeiculo(listaVeiculos, @"veiculo.csv");
+                    return true;
                 }
                 else
                 {
-                    Console.WriteLine("Índice de veículo inválido.");
+                    Console.WriteLine("Veículo não disponível para manutenção.");
                     return false;
                 }
             }
@@ -118,6 +110,8 @@ namespace Projeto_UFCD5089
                     if (index >= 0 && index < listaVeiculos.Count)
                     {
                         listaVeiculos[index].StatusManutencao = false;
+                        GestorFicheiros.AtualizarEstadoAluguelVeiculo(listaVeiculos, @"veiculo.csv");
+
                         return true;
                     }
                     else
@@ -137,7 +131,6 @@ namespace Projeto_UFCD5089
                 return false;
             }
         }
-
 
         public bool AdicionarAluguerVeiculo(int index)
         {
@@ -212,7 +205,7 @@ namespace Projeto_UFCD5089
 
         #region Listagens
 
-        public void MostrarVeiculosEmManutencao()
+        public bool MostrarVeiculosEmManutencao()
         {
             Console.WriteLine(" ___________________________");
             Console.WriteLine("|                           |");
@@ -234,36 +227,14 @@ namespace Projeto_UFCD5089
             if (count == 0)
             {
                 Console.WriteLine("Não há veículos em manutenção no momento.");
+                Console.ReadKey();
+                return false;
             }
+            return true;
             
         }
 
-        public void MostrarVeiculosDisponiveisManuntencao()
-        {
-            Console.WriteLine(" ____________________________________________");
-            Console.WriteLine("|                                            |");
-            Console.WriteLine("|    Veículos Disponíveis para Manuntençao   |");
-            Console.WriteLine("|____________________________________________|\n");
-            int count = 0;
-
-            foreach (Veiculo veiculo in listaVeiculos)
-            {
-                if (!veiculo.StatusAluguer && !veiculo.StatusManutencao)
-                {
-                    Console.WriteLine($"Veiculo: {count}");
-                    ExibirDetalhesVeiculo(veiculo);
-                    count++;
-                }
-            }
-
-            if (count == 0)
-            {
-                Console.WriteLine("Não há veículos disponíveis para aluguer no momento.");
-            }
-
-        }
-
-        public void ListarVeiculosAlugados()
+        public bool ListarVeiculosAlugados()
         {
             Console.WriteLine(" _____________________");
             Console.WriteLine("|                     |");
@@ -285,10 +256,13 @@ namespace Projeto_UFCD5089
             if (count == 0)
             {
                 Console.WriteLine("Não foram alugados veiculos");
+                Console.ReadKey();
+                return false;
             }
+            return true;
         }
 
-        public void ListarVeiculosDisponiveisParaAluguer()
+        public bool ListarVeiculosDisponiveis()
         {
             Console.WriteLine(" ________________________________________");
             Console.WriteLine("|                                        |");
@@ -311,7 +285,10 @@ namespace Projeto_UFCD5089
             if (count == 0)
             {
                 Console.WriteLine("Não há veículos disponíveis de momento.");
+                Console.ReadKey();
+                return false;
             }
+            return true;
         }
 
         #endregion

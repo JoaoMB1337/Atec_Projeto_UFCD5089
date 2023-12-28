@@ -147,7 +147,7 @@ namespace Projeto_UFCD5089
                     {
                         string estadoManutencao = veiculo.StatusManutencao ? "True" : "False";
                         string linha = $"{veiculo.Id},{veiculo.NumeroPortas},{veiculo.TipoCaixa},{veiculo.Cilindrada},{veiculo.NumeroEixos}," +
-                                        $"{veiculo.MaxPassageiros},{veiculo.PesoMaximo},{veiculo.ValorAluguerDiario},{estadoManutencao},{veiculo.StatusManutencao}";
+                                        $"{veiculo.MaxPassageiros},{veiculo.PesoMaximo},{veiculo.ValorAluguerDiario},{veiculo.StatusAluguer},{estadoManutencao}";
                         sw.WriteLine(linha);
                     }
                 }
