@@ -239,6 +239,7 @@ namespace Projeto_UFCD5089
                 Console.ReadKey();
                 return false;
             }
+            Console.ReadKey();
             return true;
             
         }
@@ -286,7 +287,7 @@ namespace Projeto_UFCD5089
 
             foreach (Veiculo veiculo in listaVeiculos)
             {
-                if (!veiculo.StatusAluguer && !veiculo.StatusManutencao)
+                if (veiculo.StatusAluguer==false && veiculo.StatusManutencao==false)
                 {
                     Console.WriteLine(" ________________");
                     Console.WriteLine("|                |");
@@ -304,7 +305,6 @@ namespace Projeto_UFCD5089
                 Console.ReadKey();
                 return false;
             }
-            Console.ReadKey();
             return true;
         }
 
