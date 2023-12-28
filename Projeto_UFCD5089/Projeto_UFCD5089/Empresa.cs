@@ -290,7 +290,6 @@ namespace Projeto_UFCD5089
                     Console.WriteLine($"|   Veiculo: {count}   |");
                     Console.WriteLine("|________________|");
                     ExibirDetalhesVeiculo(veiculo);
-                    Console.WriteLine("-----------------------------------------");
                     count++;
 
                 }
