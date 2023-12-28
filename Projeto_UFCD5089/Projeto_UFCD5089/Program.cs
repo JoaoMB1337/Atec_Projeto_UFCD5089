@@ -312,14 +312,16 @@ namespace Projeto_UFCD5089
             if(rentCar.ListarVeiculosDisponiveis())
             {
                 Console.Write("Veiculo a remover: ");
-                int index = int.Parse(Console.ReadLine());
-                if (rentCar.RemoverVeiculo(index))
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int index) && rentCar.RemoverVeiculo(index))
                 {
                     Console.WriteLine("Veiculo removido com sucesso!");
+                    Console.ReadKey();
                 }
                 else
                 {
                     Console.WriteLine("Veiculo Invalido!");
+                    Console.ReadKey();
                 }
             }
             
@@ -331,8 +333,8 @@ namespace Projeto_UFCD5089
             if (rentCar.ListarVeiculosDisponiveis())
             {
                 Console.Write("Veiculo a meter em manutenção: ");
-                int index = int.Parse(Console.ReadLine());
-                if (rentCar.AdicionarManutencaoVeiculo(index))
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int index) && rentCar.AdicionarManutencaoVeiculo(index))
                 {
                     Console.WriteLine("Veiculo adicionado à manutenção");
                     Console.ReadKey();
@@ -352,14 +354,16 @@ namespace Projeto_UFCD5089
             if (rentCar.MostrarVeiculosEmManutencao())
             {
                 Console.Write("Veiculo a remover da manutenção: ");
-                int index = int.Parse(Console.ReadLine());
-                if (rentCar.RemoverManutencaoVeiculo(index))
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int index) && rentCar.RemoverManutencaoVeiculo(index))
                 {
                     Console.WriteLine("Veiculo retirado com sucesso da manutenção");
+                    Console.ReadKey();
                 }
                 else
                 {
                     Console.WriteLine("Veiculo nao retirado com sucesso da manutenção");
+                    Console.ReadKey();
                 }
             }
             
@@ -369,18 +373,18 @@ namespace Projeto_UFCD5089
         {
             if (rentCar.ListarVeiculosDisponiveis()){
                 Console.Write("Escolha o veículo a alugar (insira o índice): ");
-                int index = int.Parse(Console.ReadLine());
-                if (index >= 0 && index < rentCar.listaVeiculos.Count)
+                string inputCarro = Console.ReadLine();
+                if (int.TryParse(inputCarro, out int index) && index >= 0 && index < rentCar.listaVeiculos.Count)
                 {
                     Console.Write("Insira a quantidade de dias de aluguel: ");
-                    int dias = int.Parse(Console.ReadLine());
-                    if (dias > 0)
+                    string inputDias = Console.ReadLine();
+                    if (int.TryParse(inputDias, out int dias) && dias > 0)
                     {
                         double valorAPagar = rentCar.CalcularValorAluguer(index, dias);
                         Console.WriteLine($"O valor a pagar pelo aluguel é: {valorAPagar}");
                         Console.Write("Insira o valor a pagar: ");
-                        double valorPago = double.Parse(Console.ReadLine());
-                        if (valorPago >= valorAPagar)
+                        string inputValor = Console.ReadLine();
+                        if (int.TryParse(inputValor, out int valorPago) && valorPago >= valorAPagar)
                         {
                             if (rentCar.AdicionarAluguerVeiculo(index))
                             {
@@ -418,14 +422,16 @@ namespace Projeto_UFCD5089
            if(rentCar.ListarVeiculosAlugados())
            {
                 Console.Write("Veiculo a retirar do aluguer: ");
-                int index = int.Parse(Console.ReadLine());
-                if (rentCar.RetirarAluguerVeiculo(index))
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int index) && rentCar.RetirarAluguerVeiculo(index))
                 {
                     Console.WriteLine($"Veículo {index + 1} devolvido com sucesso!");
+                    Console.ReadKey();
                 }
                 else
                 {
                     Console.WriteLine("Não foi possivel remover o veiculo do alguer!");
+                    Console.ReadKey();
                 }
            }
         }
