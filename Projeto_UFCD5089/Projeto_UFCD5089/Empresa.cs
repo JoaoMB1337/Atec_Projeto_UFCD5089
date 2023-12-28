@@ -15,13 +15,18 @@ namespace Projeto_UFCD5089
 
         private static void ExibirDetalhesVeiculo(Veiculo veiculo)
         {
-            Console.WriteLine($"Número de Portas: {veiculo.NumeroPortas}");
-            Console.WriteLine($"Tipo de Caixa: {veiculo.TipoCaixa}");
-            Console.WriteLine($"Cilindrada: {veiculo.Cilindrada}");
-            Console.WriteLine($"Número de Eixos: {veiculo.NumeroEixos}");
-            Console.WriteLine($"Máximo de Passageiros: {veiculo.MaxPassageiros}");
-            Console.WriteLine($"Peso Máximo: {veiculo.PesoMaximo}");
-            Console.WriteLine($"Valor de Aluguer Diário: {veiculo.ValorAluguerDiario}");
+            Console.WriteLine("  ______________________________________");
+            Console.WriteLine(" |                                      |");
+            Console.WriteLine($" | Número de Portas: {veiculo.NumeroPortas}                  |");
+            Console.WriteLine($" | Tipo de Caixa: {veiculo.TipoCaixa}                |");
+            Console.WriteLine($" | Cilindrada: {veiculo.Cilindrada}                     |");
+            Console.WriteLine($" | Número de Eixos: {veiculo.NumeroEixos}                   |");
+            Console.WriteLine($" | Máximo de Passageiros: {veiculo.MaxPassageiros}             |");
+            Console.WriteLine($" | Peso Máximo: {veiculo.PesoMaximo}                    |");
+            Console.WriteLine($" | Valor de Aluguer Diário: {veiculo.ValorAluguerDiario}          |");
+            Console.WriteLine(" |______________________________________|");
+
+
             Console.WriteLine("\n");
         }
 
