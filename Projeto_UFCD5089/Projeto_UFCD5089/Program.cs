@@ -194,58 +194,107 @@ namespace Projeto_UFCD5089
 
         private static void AdicionarVeiculo()
         {
-            int numeroPortas, cilindrada, numeroEixos, maxPassageiros, pesoMaximo;
-            double valorAluguerDiario;
-            string tipoCaixa; 
+            int numeroPortas, cilindrada, numeroEixos, maxPassageiros, pesoMaximo, valorAluguerDiario;
+            string tipoCaixa;
 
             do
             {
                 Console.Write("Informe o número de portas do veículo: ");
-                numeroPortas = int.Parse(Console.ReadLine());
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out numeroPortas) && numeroPortas >= 1 && numeroPortas <= 5)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Por favor, insira um número válido de 1 a 5.");
+                }
 
-            } while (numeroPortas < 1 || numeroPortas > 5); 
-            
+            } while (true);
+
             do
             {
                 Console.Write("Informe o tipo de caixa do veículo: ");
                 tipoCaixa = Console.ReadLine();
 
-            } while(!(tipoCaixa.ToLower() == "manual" || tipoCaixa.ToLower() == "automatico"));
+            } while (!(tipoCaixa.ToLower() == "manual" || tipoCaixa.ToLower() == "automatico"));
 
             do
             {
                 Console.Write("Informe a cilindrada do veículo: ");
-                cilindrada = int.Parse(Console.ReadLine());
+                string input = Console.ReadLine();
 
-            } while (cilindrada < 100 || cilindrada > 10000);
+                if (int.TryParse(input, out cilindrada) && cilindrada >= 100 && cilindrada <= 10000)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Por favor, insira um número válido de 100 a 10000.");
+                }
+
+            } while (true);
 
             do
             {
                 Console.Write("Informe o número de eixos do veículo: ");
-                numeroEixos = int.Parse(Console.ReadLine());
+                string input = Console.ReadLine();
 
-            } while(numeroEixos < 1 || numeroEixos > 3);
+                if (int.TryParse(input, out numeroEixos) && numeroEixos > 1 && numeroEixos <= 3)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Por favor, insira um número válido de 2 ou 3.");
+                }
+
+            } while (true);
 
             do
             {
                 Console.Write("Informe o número máximo de passageiros do veículo: ");
-                maxPassageiros = int.Parse(Console.ReadLine());
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out maxPassageiros) && maxPassageiros >= 1 && maxPassageiros <= 10)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Por favor, insira um número válido de 1 a 10.");
+                }
 
-            } while(maxPassageiros < 1 || maxPassageiros > 10);
+            } while (true);
 
             do
             {
                 Console.Write("Informe o peso máximo do veículo: ");
-                pesoMaximo = int.Parse(Console.ReadLine());
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out pesoMaximo) && pesoMaximo >= 100 && pesoMaximo <= 10000)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Por favor, insira um número válido de 100 a 10000. ");
+                }
 
-            } while (pesoMaximo < 100 || pesoMaximo > 10000);
+            } while (true);
 
             do
             {
                 Console.Write("Informe o valor do aluguer diário do veículo: ");
-                valorAluguerDiario = double.Parse(Console.ReadLine());
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out valorAluguerDiario) && valorAluguerDiario >= 1)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Por favor, insira um número maior que 1 .");
+                }
 
-            } while(valorAluguerDiario < 1);
+            } while (true);
 
             //Quando se cria o veh. o status e manutenção ainda nao são contados
             Veiculo novoVeiculo = new Veiculo(numeroPortas, tipoCaixa, cilindrada, numeroEixos, maxPassageiros, pesoMaximo, valorAluguerDiario, false, false);
