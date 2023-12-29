@@ -13,6 +13,7 @@ namespace Projeto_UFCD5089
     {
         public List<Veiculo> listaVeiculos = new List<Veiculo>();
 
+        //Exibir detalhes de um veiculo
         private static void ExibirDetalhesVeiculo(Veiculo veiculo)
         {
             Console.WriteLine("  ______________________________________");
@@ -30,6 +31,7 @@ namespace Projeto_UFCD5089
             Console.WriteLine("\n");
         }
 
+        //Carrega um veiculo apartir de um CSV
         public void CarregarVeiculosDoArquivo(string caminhoArquivo){
 
             int ultimoId = GestorFicheiros.ObterUltimoId(caminhoArquivo);
@@ -40,6 +42,7 @@ namespace Projeto_UFCD5089
 
         #region Metodos de Edição de Veiculos
 
+        //Adicionar um veiculo a frota
         public bool AdicionarVeiculo(Veiculo veiculo)
         {
             try
@@ -60,6 +63,7 @@ namespace Projeto_UFCD5089
             }
         }
 
+        //Remover um veiculo da frota
         public bool RemoverVeiculo(int index)
         {
             try
@@ -82,7 +86,7 @@ namespace Projeto_UFCD5089
             return false;
         }
 
-
+        //Adicionar um veiculo a manutenção
         public bool AdicionarManutencaoVeiculo(int index)
         {
             try
@@ -106,6 +110,7 @@ namespace Projeto_UFCD5089
             
         }
 
+        //Remover um veiculo da manutenção
         public bool RemoverManutencaoVeiculo(int index)
         {
             try
@@ -137,6 +142,7 @@ namespace Projeto_UFCD5089
             }
         }
 
+        //Adicionar um veiculo para aluguel
         public bool AdicionarAluguerVeiculo(int index)
         {
             try
@@ -163,6 +169,7 @@ namespace Projeto_UFCD5089
             
         }
 
+        //Tirar um veiculo de aluguel
         public bool RetirarAluguerVeiculo(int index)
         {
             try
@@ -195,6 +202,7 @@ namespace Projeto_UFCD5089
             
         }
 
+        //Calcular o valor de aluguel de um veiculo
         public double CalcularValorAluguer(int index, int diasAluguer)
         {
             if (index >= 0 && index < listaVeiculos.Count && diasAluguer > 0 && !listaVeiculos[index].StatusManutencao && !listaVeiculos[index].StatusAluguer)
@@ -210,6 +218,7 @@ namespace Projeto_UFCD5089
 
         #region Listagens
 
+        //Mostra os veiculos em manutenção
         public bool MostrarVeiculosEmManutencao()
         {
             Console.WriteLine(" ___________________________");
@@ -244,6 +253,7 @@ namespace Projeto_UFCD5089
             
         }
 
+        //Lista os veiculos alugados
         public bool ListarVeiculosAlugados()
         {
             Console.WriteLine(" _____________________");
@@ -277,6 +287,7 @@ namespace Projeto_UFCD5089
             return true;
         }
 
+        //Lista os veiculos disponiveis
         public bool ListarVeiculosDisponiveis()
         {
             Console.WriteLine(" ________________________________________");
@@ -305,6 +316,7 @@ namespace Projeto_UFCD5089
                 Console.ReadKey();
                 return false;
             }
+            Console.ReadKey();
             return true;
         }
 

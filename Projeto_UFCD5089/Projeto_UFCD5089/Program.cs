@@ -3,13 +3,16 @@ namespace Projeto_UFCD5089
 {
     internal class Program
     {
+        //Instanciar classe Empresa
         private static Empresa rentCar = new Empresa();
 
+        //Metodo Main
         static void Main(string[] args)
         {
             
             bool sair = false;
 
+            //Loop do menu principal
             while (!sair)
             {
                 Console.Clear();
@@ -62,6 +65,7 @@ namespace Projeto_UFCD5089
 
         #region Menus
 
+        //Submenu gestor veiculos
         private static void MenuGestorVeiculos()
         {
             bool voltar = false;
@@ -114,6 +118,7 @@ namespace Projeto_UFCD5089
             }
         }
         
+        //Submenu de aluguel de veiculos
         private static void MenuAluguer()
         {
             Console.Clear();
@@ -152,6 +157,7 @@ namespace Projeto_UFCD5089
 
         }
 
+        //Submenu relatórios
         private static void MenuRelatorios()
         {
             Console.Clear();
@@ -192,6 +198,7 @@ namespace Projeto_UFCD5089
 
         #endregion
 
+        //Adicionar veiculos a frota
         private static void AdicionarVeiculo()
         {
             int numeroPortas, cilindrada, numeroEixos, maxPassageiros, pesoMaximo, valorAluguerDiario;
@@ -296,7 +303,7 @@ namespace Projeto_UFCD5089
 
             } while (true);
 
-            //Quando se cria o veh. o status e manutenção ainda nao são contados
+            //Quando se cria o veiculo o status e manutenção ainda nao são contados
             Veiculo novoVeiculo = new Veiculo(numeroPortas, tipoCaixa, cilindrada, numeroEixos, maxPassageiros, pesoMaximo, valorAluguerDiario, false, false);
 
             if (rentCar.AdicionarVeiculo(novoVeiculo)){
@@ -307,6 +314,7 @@ namespace Projeto_UFCD5089
             }
         }
        
+        //Remover veiculos da frota
         private static void RemoverVeiculo()
         {
             if(rentCar.ListarVeiculosDisponiveis())
@@ -327,7 +335,7 @@ namespace Projeto_UFCD5089
             
         }
 
-
+        //Colocar veiculos em manutenção
         private static void FazerManutencao()
         {
             if (rentCar.ListarVeiculosDisponiveis())
@@ -349,6 +357,7 @@ namespace Projeto_UFCD5089
             
         }
 
+        //Remover manutenção
         private static void RemoverDaManutencao()
         {
             if (rentCar.MostrarVeiculosEmManutencao())
@@ -369,6 +378,7 @@ namespace Projeto_UFCD5089
             
         }
 
+        //Alugar um veiculo da frota
         private static void AdicionarAluguer()
         {
             if (rentCar.ListarVeiculosDisponiveis()){
@@ -417,6 +427,7 @@ namespace Projeto_UFCD5089
             }
         }
 
+        //Retirar um veiculo de aluguel
         private static void RetirarAlguer()
         {
            if(rentCar.ListarVeiculosAlugados())
@@ -436,13 +447,15 @@ namespace Projeto_UFCD5089
            }
         }
 
-
         #region ListagensRelatorios
+
+        //Listar veiculos alugados
         private static void VeiculosAlugados()
         {
             rentCar.ListarVeiculosAlugados();
         }
 
+        //Listar veiculos disponiveis para aluguel
         private static void VeiculosDisponiveisAluguer()
         {
             rentCar.ListarVeiculosDisponiveis();

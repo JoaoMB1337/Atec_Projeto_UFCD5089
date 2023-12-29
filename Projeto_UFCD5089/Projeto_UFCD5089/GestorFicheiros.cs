@@ -7,6 +7,7 @@ namespace Projeto_UFCD5089
 {
     internal class GestorFicheiros
     {
+        //Função para carregar lista de veiculos via arquivo CSV
         public static List<Veiculo> CarregarListaViaArquivo(string caminhoArquivo)
         {
             List<Veiculo> listaVeiculos = new List<Veiculo>();
@@ -52,6 +53,7 @@ namespace Projeto_UFCD5089
             return listaVeiculos;
         }
 
+        //Obter ultimoID no arquivo
         public static int ObterUltimoId(string caminhoArquivo)
         {
             int ultimoId = 0;
@@ -78,6 +80,7 @@ namespace Projeto_UFCD5089
             return ultimoId;
         }
 
+        //Escrever lista de veiculos no CSV
         public static void EscreverCSV(List<Veiculo> listaVeiculos, string nomeArquivo)
         {
             try
@@ -104,6 +107,7 @@ namespace Projeto_UFCD5089
             }
         }
 
+        //Atualizar estado de aluguel no CSV
         public static void AtualizarEstadoAluguelVeiculo(List<Veiculo> listaVeiculos, string nomeArquivo)
         {
             try
@@ -132,6 +136,7 @@ namespace Projeto_UFCD5089
             }
         }
 
+        //Atualizar estado de manutenção no CSV
         public static void AtulizarEstadoManutençãoVeiculo(List<Veiculo> listaVeiculos, string nomeArquivo)
         {
             try

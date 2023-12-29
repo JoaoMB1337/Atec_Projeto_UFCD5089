@@ -8,9 +8,13 @@ namespace Projeto_UFCD5089
 {
     internal class Veiculo
     {
+        //Acompanhar o ultimoId atribuido
         private static int ultimoId = 0;
+        //Obter o valor do ultimo ID atribuido
         public static int UltimoId => ultimoId;
+        //Representa o ID do veiculo, somente leitura
         public int Id { get; }
+        //Obter e definir varios atributos do veiculo
         public int NumeroPortas { get; set; }
         public string TipoCaixa { get; set; }
         public int Cilindrada { get; set; }
@@ -21,6 +25,7 @@ namespace Projeto_UFCD5089
         public bool StatusAluguer { get; set; }
         public bool StatusManutencao { get; set; }
 
+        //Construtor com parametros 
         public Veiculo(int numeroPortas, string tipoCaixa, int cilindrada, int numeroEixos, int maxPassageiros, int pesoMaximo, double valorAluguerDiario, bool statusAluguer, bool statusManutencao)
         {
             Id = ++ultimoId;
@@ -35,6 +40,7 @@ namespace Projeto_UFCD5089
             StatusManutencao = statusManutencao;
         }
 
+        //Define o valor do ultimoID
         public static void DefinirUltimoId(int id)
         {
             ultimoId = id;
