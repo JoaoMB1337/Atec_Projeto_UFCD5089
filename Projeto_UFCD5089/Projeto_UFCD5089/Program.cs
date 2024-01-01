@@ -19,21 +19,23 @@ namespace Projeto_UFCD5089
 
                 rentCar.CarregarVeiculosDoArquivo(@"veiculo.csv");
 
-                Console.WriteLine(" _________________________");
-                Console.WriteLine("|                         |");
-                Console.WriteLine("| Automobile renta-a-car  | ");
-                Console.WriteLine("|_________________________|");
-                Console.WriteLine("|                         |");
-                Console.WriteLine("|  1. Gestor de veiculos  |");
-                Console.WriteLine("|                         |");
-                Console.WriteLine("|  2. Alugar veículo      |");
-                Console.WriteLine("|                         |");
-                Console.WriteLine("|  3. Relatorios veículos |");
-                Console.WriteLine("|                         |");
-                Console.WriteLine("|  4. Sair                |");
-                Console.WriteLine("|_________________________|");
+                Console.WriteLine("  ┌─────────────────────────┐");
+                Console.WriteLine("  │                         │");
+                Console.WriteLine("  │  Automobile Renta-Car   │");
+                Console.WriteLine("  │                         │");
+                Console.WriteLine("  │─────────────────────────│");
+                Console.WriteLine("  │                         │");
+                Console.WriteLine("  │  1. Gestor de Veículos  │");
+                Console.WriteLine("  │                         │");
+                Console.WriteLine("  │  2. Alugar Veículo      │");
+                Console.WriteLine("  │                         │");
+                Console.WriteLine("  │  3. Relatórios Veículos │");
+                Console.WriteLine("  │                         │");
+                Console.WriteLine("  │  4.  Sair               │");
+                Console.WriteLine("  │                         │");
+                Console.WriteLine("  └─────────────────────────┘");
 
-                Console.Write("\nSelecione uma opção: ");
+                Console.Write("\n   Selecione uma opção: ");
                 int opcao;
                 while (!int.TryParse(Console.ReadLine(), out opcao) || opcao < 1 || opcao > 4)
                 {
@@ -74,18 +76,22 @@ namespace Projeto_UFCD5089
             {
                 Console.Clear();
 
-                Console.WriteLine(" __________________________");
-                Console.WriteLine("|                          |");
-                Console.WriteLine("|   Gestor de Veículos     |");
-                Console.WriteLine("|__________________________|");
-                Console.WriteLine("|                          |");
-                Console.WriteLine("|  1. Adicionar Veículo    |");
-                Console.WriteLine("|  2. Remover Veículo      |");
-                Console.WriteLine("|  3. Adicionar Manutenção |");
-                Console.WriteLine("|  4. Remover Manutenção   |");
-                Console.WriteLine("|  5. Voltar               |");
-                Console.WriteLine("|__________________________|");
-                Console.Write("\nSelecione uma opção: ");
+                Console.WriteLine("   __________________________");
+                Console.WriteLine("  |                          |");
+                Console.WriteLine("  |   Gestor de Veículos     |");
+                Console.WriteLine("  |__________________________|");
+                Console.WriteLine("  |                          |");
+                Console.WriteLine("  |  1. Adicionar Veículo    |");
+                Console.WriteLine("  |                          |");
+                Console.WriteLine("  |  2. Remover Veículo      |");
+                Console.WriteLine("  |                          |");
+                Console.WriteLine("  |  3. Adicionar Manutenção |");
+                Console.WriteLine("  |                          |");
+                Console.WriteLine("  |  4. Remover Manutenção   |");
+                Console.WriteLine("  |                          |");
+                Console.WriteLine("  |  5. Voltar               |");
+                Console.WriteLine("  |__________________________|");
+                Console.Write("\n   Selecione uma opção: ");
 
 
                 int opcao;
@@ -123,16 +129,18 @@ namespace Projeto_UFCD5089
         {
             Console.Clear();
 
-            Console.WriteLine(" ____________________________");
-            Console.WriteLine("|                            |");
-            Console.WriteLine("|          Aluguer           |");
-            Console.WriteLine("|____________________________|");
-            Console.WriteLine("|                            |");
-            Console.WriteLine("|  1. Adicionar Aluguer      |");
-            Console.WriteLine("|  2. Retirar Aluguer        |");
-            Console.WriteLine("|  3. Voltar                 |");
-            Console.WriteLine("|____________________________|");
-            Console.Write("\nSelecione uma opção: ");
+            Console.WriteLine("   ____________________________");
+            Console.WriteLine("  |                            |");
+            Console.WriteLine("  |          Aluguer           |");
+            Console.WriteLine("  |____________________________|");
+            Console.WriteLine("  |                            |");
+            Console.WriteLine("  |  1. Adicionar Aluguer      |");
+            Console.WriteLine("  |                            |");
+            Console.WriteLine("  |  2. Retirar Aluguer        |");
+            Console.WriteLine("  |                            |");
+            Console.WriteLine("  |  3. Voltar                 |");
+            Console.WriteLine("  |____________________________|");
+            Console.Write("\n   Selecione uma opção: ");
 
             int opcao;
             while (!int.TryParse(Console.ReadLine(), out opcao) || opcao < 1 || opcao > 4)
@@ -162,16 +170,18 @@ namespace Projeto_UFCD5089
         {
             Console.Clear();
 
-            Console.WriteLine(" ____________________________");
-            Console.WriteLine("|                            |");
-            Console.WriteLine("|        Relatórios          |");
-            Console.WriteLine("|____________________________|");
-            Console.WriteLine("|                            |");
-            Console.WriteLine("|  1. Veículos Alugados      |");
-            Console.WriteLine("|  2. Veículos Disponíveis   |");
-            Console.WriteLine("|  3. Voltar                 |");
-            Console.WriteLine("|____________________________|");
-            Console.Write("\nSelecione uma opção: ");
+            Console.WriteLine("   ____________________________");
+            Console.WriteLine("  |                            |");
+            Console.WriteLine("  |        Relatórios          |");
+            Console.WriteLine("  |____________________________|");
+            Console.WriteLine("  |                            |");
+            Console.WriteLine("  |  1. Veículos Alugados      |");
+            Console.WriteLine("  |                            |");
+            Console.WriteLine("  |  2. Veículos Disponíveis   |");
+            Console.WriteLine("  |                            |");
+            Console.WriteLine("  |  3. Voltar                 |");
+            Console.WriteLine("  |____________________________|");
+            Console.Write("\n    Selecione uma opção: ");
 
 
             int opcao;
@@ -206,7 +216,7 @@ namespace Projeto_UFCD5089
 
             do
             {
-                Console.Write("Informe o número de portas do veículo: ");
+                Console.Write("\nInforme o número de portas do veículo: ");
                 string input = Console.ReadLine();
                 if (int.TryParse(input, out numeroPortas) && numeroPortas >= 1 && numeroPortas <= 5)
                 {
@@ -221,14 +231,14 @@ namespace Projeto_UFCD5089
 
             do
             {
-                Console.Write("Informe o tipo de caixa do veículo: ");
+                Console.Write("\nInforme o tipo de caixa do veículo(manual ou automatico): ");
                 tipoCaixa = Console.ReadLine();
 
             } while (!(tipoCaixa.ToLower() == "manual" || tipoCaixa.ToLower() == "automatico"));
 
             do
             {
-                Console.Write("Informe a cilindrada do veículo: ");
+                Console.Write("\nInforme a cilindrada do veículo: ");
                 string input = Console.ReadLine();
 
                 if (int.TryParse(input, out cilindrada) && cilindrada >= 100 && cilindrada <= 10000)
@@ -244,7 +254,7 @@ namespace Projeto_UFCD5089
 
             do
             {
-                Console.Write("Informe o número de eixos do veículo: ");
+                Console.Write("\nInforme o número de eixos do veículo: ");
                 string input = Console.ReadLine();
 
                 if (int.TryParse(input, out numeroEixos) && numeroEixos > 1 && numeroEixos <= 3)
@@ -260,7 +270,7 @@ namespace Projeto_UFCD5089
 
             do
             {
-                Console.Write("Informe o número máximo de passageiros do veículo: ");
+                Console.Write("\nInforme o número máximo de passageiros do veículo: ");
                 string input = Console.ReadLine();
                 if (int.TryParse(input, out maxPassageiros) && maxPassageiros >= 1 && maxPassageiros <= 10)
                 {
@@ -275,7 +285,7 @@ namespace Projeto_UFCD5089
 
             do
             {
-                Console.Write("Informe o peso máximo do veículo: ");
+                Console.Write("\nInforme o peso máximo do veículo: ");
                 string input = Console.ReadLine();
                 if (int.TryParse(input, out pesoMaximo) && pesoMaximo >= 100 && pesoMaximo <= 10000)
                 {
@@ -290,7 +300,7 @@ namespace Projeto_UFCD5089
 
             do
             {
-                Console.Write("Informe o valor do aluguer diário do veículo: ");
+                Console.Write("\nInforme o valor(€) do aluguer diário do veículo: ");
                 string input = Console.ReadLine();
                 if (int.TryParse(input, out valorAluguerDiario) && valorAluguerDiario >= 1)
                 {
@@ -459,6 +469,7 @@ namespace Projeto_UFCD5089
         private static void VeiculosDisponiveisAluguer()
         {
             rentCar.ListarVeiculosDisponiveis();
+            Console.ReadKey();
         }
 
         #endregion
