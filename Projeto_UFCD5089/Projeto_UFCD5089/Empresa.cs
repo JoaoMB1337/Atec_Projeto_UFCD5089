@@ -316,7 +316,7 @@ namespace Projeto_UFCD5089
                 Console.ReadKey();
                 return false;
             }
-            Console.ReadKey();
+            //Console.ReadKey();
             return true;
         }
 
