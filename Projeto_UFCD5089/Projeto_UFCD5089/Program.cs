@@ -342,6 +342,10 @@ namespace Projeto_UFCD5089
                     Console.ReadKey();
                 }
             }
+            else
+            {
+                Console.ReadKey();
+            }
             
         }
 
@@ -364,6 +368,10 @@ namespace Projeto_UFCD5089
 
                 }
             }
+            else
+            {
+                Console.ReadKey();
+            }
             
         }
 
@@ -384,6 +392,10 @@ namespace Projeto_UFCD5089
                     Console.WriteLine("Veiculo nao retirado com sucesso da manutenção");
                     Console.ReadKey();
                 }
+            }
+            else
+            {
+                Console.ReadKey();
             }
             
         }
@@ -439,6 +451,9 @@ namespace Projeto_UFCD5089
                     Console.ReadKey();
                 }
             }
+            else { 
+                    Console.ReadKey(); 
+            }
         }
 
         //Retirar um veiculo de aluguel
@@ -458,6 +473,10 @@ namespace Projeto_UFCD5089
                     Console.WriteLine("Não foi possivel remover o veiculo do alguer!");
                     Console.ReadKey();
                 }
+           }
+           else
+           {
+                Console.ReadKey();
            }
         }
 
