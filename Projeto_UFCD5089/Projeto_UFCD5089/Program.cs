@@ -404,8 +404,11 @@ namespace Projeto_UFCD5089
                         Console.WriteLine($"O valor a pagar pelo aluguel é: {valorAPagar}");
                         Console.Write("Insira o valor a pagar: ");
                         string inputValor = Console.ReadLine();
-                        if (int.TryParse(inputValor, out int valorPago) && valorPago >= valorAPagar)
+                        double.TryParse(inputValor, out double valorPago);
+                        if (valorPago >= valorAPagar)
                         {
+                            double troco = rentCar.CalcularTroco(valorPago, valorAPagar);
+                            Console.WriteLine($"Troco: { troco}");
                             if (rentCar.AdicionarAluguerVeiculo(index))
                             {
                                 Console.WriteLine("Aluguer adicionado com sucesso!");
@@ -415,6 +418,7 @@ namespace Projeto_UFCD5089
                             {
                                 Console.WriteLine("Ocorreu um erro ao adicionar o aluguer.");
                                 Console.ReadKey();
+
                             }
                         }
                         else
@@ -463,6 +467,7 @@ namespace Projeto_UFCD5089
         private static void VeiculosAlugados()
         {
             rentCar.ListarVeiculosAlugados();
+            Console.ReadKey();
         }
 
         //Listar veiculos disponiveis para aluguel
